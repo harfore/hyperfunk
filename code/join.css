@@ -1,0 +1,27 @@
+* {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+#joinback {
+    height: 60%;
+    width: 60%;
+    background-repeat: repeat;
+}
+
+#form {
+    font-size: 25px;
+    color: white;
+    background: rgba(0, 0, 0, 0);
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    font-family: cursive;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 30%;
+    color: white;
+    width: 70%;
+}
