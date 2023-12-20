@@ -1,5 +1,5 @@
 body {
-    background: black;
+    background: white;
     margin: 0;
     padding: 0;
 }
@@ -37,5 +37,18 @@ h1 {
 }
 
 .buttondiv {
+    text-align: center;
+}
+
+.presentbutton {
+    padding: 20px;
+    height: 70px;
+    font-size: 20px;
+    background-color: red;
+    size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.present {
     text-align: center;
 }

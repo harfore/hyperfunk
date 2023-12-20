@@ -1,33 +1,33 @@
-const afficheresultat = document.getElementById('resultat')
-buttontest.addEventListener('click', async (e) => {
-    // prevent default form behaviour
-    e.preventDefault()
+let present = document.getElementById('present');
 
+present.addEventListener('click', async (e) => {
+    e.preventDefault(); // prevent default form behaviour
     try {
-        console.log(result)
-        document.getElementById('buttontest').style.display = 'none'
-        document.getElementById('start').style.display = 'block'
         const res = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey=QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a`);
         const data = await res.json();
-        console.log(data)
-        for (i = 0; i < 4; i++) {
-            afficheresultat.innerHTML += `<br><br><h2>` + _embedded.events._embedded.attractions.name + `</h2>`
-            afficheresultat.innerHTML += _embedded.events._embedded.attractions.externalLinks.youtube
-            afficheresultat.innerHTML += _embedded.events._embedded.attractions.externalLinks.spotify
-            afficheresultat.innerHTML += _embedded.events._embedded.attractions.externalLinks.instagram
-            afficheresultat.innerHTML += _embedded.events._embedded.attractions.externalLinks.homepage
-            afficheresultat.innerHTML += `<img src="${_embedded.events._embedded.attractions.externalLinks.images[i]}"><br>`
-            afficheresultat.innerHTML += `<img src="${_embedded.events._embedded.attractions.externalLinks.images[i + 1]}"><br>`
-            afficheresultat.innerHTML += _embedded.events._embedded.attractions.classifications.genre.name
-            afficheresultat.innerHTML += _embedded.events._embedded.attractions.upcomingEvents.ticketmaster
-            afficheresultat.innerHTML += `<u>Duration:</u> ` + data.data[i].duration + `<br><br>`
-            afficheresultat.innerHTML += `<u>Year :</u> ` + data.data[i].year + `<br><br>`
-            afficheresultat.innerHTML += `<u>Score :</u> ` + data.data[i].score + `<br><br><br>`
+        const events = data._embedded.events; // Assuming _embedded.events contains the events array
+
+        present.innerHTML = ''; // Clear present element before appending new content
+
+        for (let i = 0; i < events.length && i < 7; i++) {
+            const event = events[i];
+            const attractions = event._embedded.attractions; // Assuming each event has attractions array
+
+            attractions.forEach(attraction => {
+                present.innerHTML += `<br><br><h2>${attraction.name}</h2>`;
+                present.innerHTML += `<p><a href="${attraction.externalLinks.youtube}">YouTube</a></p>`;
+                present.innerHTML += `<p><a href="${attraction.externalLinks.spotify}">Spotify</a></p>`;
+                present.innerHTML += `<p><a href="${attraction.externalLinks.instagram}">Instagram</a></p>`;
+                present.innerHTML += `<p><a href="${attraction.externalLinks.homepage}">Artist Homepage</a></p>`;
+                present.innerHTML += `<p><img src="${attraction.images[i]}"><br></p>`;
+                present.innerHTML += `<p><img src="${attraction.images[i + 1]}"><br></p>`;
+                present.innerHTML += `<p>${attraction.classifications.genre.name}</p>`;
+                present.innerHTML += `<p><a href="${attraction.upcomingEvents.ticketmaster}">Ticketmaster</a></p>`;
+                // images not external links
+            });
         }
     } catch (err) {
         console.log(err);
-        topp.innerHTML = `<p>${err}</p>`;
+        document.getElementById.innerHTML = `<p>${err}</p>`;
     }
-})
-// name, url, youtube, spotify, instagram, homepage, images, genre, upcoming events
-// _embedded/events/_embedded/attractions/name
+});
