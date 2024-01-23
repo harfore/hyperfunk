@@ -1,2 +1,2 @@
-# alive 2027
+# 2027
 https://open.spotify.com/intl-fr/album/7u6zL7kqpgLPISZYXNTgYk?si=VLmOiRlNSLi-oj1t22cGRw
