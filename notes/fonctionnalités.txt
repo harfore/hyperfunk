@@ -15,6 +15,7 @@ past, upcoming are always there
 - articles en rapport
 - par venues
 - pin videos/concerts
+- other tours by this artist
 
 base de données concert
 

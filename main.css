@@ -1,0 +1,14 @@
+body {
+    background: linear-gradient(to bottom, #012161, black);
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    text-align: center;
+    max-width: 50rem;
+}
+
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('Roboto_Mono/RobotoMono-VariableFont_wght.ttf') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+}

@@ -1,0 +1,58 @@
+.poster {
+    width: 1200px;
+    height: auto;
+    text-align: center;
+    max-width: 100%;
+
+}
+
+#presentation {
+    padding: 50px;
+    margin: 150px auto 0;
+}
+
+.text {
+    margin-left: 550px;
+    margin-right: 550px;
+}
+
+.container {
+    display: flex;
+    width: 1000px;
+    height: 300px;
+}
+
+.box1 {
+    margin: 20px;
+    text-align: center;
+}
+
+.box2 {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+.box3 {
+    width: 112px;
+    height: 100px;
+    margin: 30px;
+    margin-left: 100px;
+}
+
+#instagram {
+    width: 125px;
+    height: 130px;
+}
+
+#spotify {
+    width: 125px;
+    height: 95px;
+}
+
+#youtube {
+    width: 120px;
+    height: 100px;
+}

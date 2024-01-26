@@ -1,0 +1,44 @@
+h1 {
+    color: darkblue;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title {
+    margin-top: 50px;
+}
+
+#name {
+    font-size: 25px;
+}
+
+.presentation {
+    font-size: 20px;
+}
+
+#black-banner {
+    padding: 15px;
+    text-align: center;
+}
+
+.joinbutton {
+    padding: 20px;
+    height: 70px;
+    font-size: 20px;
+    background-color: white;
+}
+
+#buttondiv {
+    text-align: center;
+}
+
+.presentbutton {
+    padding: 20px;
+    height: 70px;
+    font-size: 20px;
+    background-color: white;
+}
+
+#present {
+    color: white;
+}

@@ -1,0 +1,7 @@
+https://developer-acct.ticketmaster.com/user/login
+
+https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/#search-events-v2
+
+https://developer.ticketmaster.com/products-and-docs/tutorials/events-search/search_events_with_discovery_api.html
+
+https://developer.ticketmaster.com/api-explorer/v2/
