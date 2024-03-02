@@ -16,11 +16,6 @@ h1 {
     font-size: 20px;
 }
 
-#black-banner {
-    padding: 15px;
-    text-align: center;
-}
-
 .joinbutton {
     padding: 20px;
     height: 70px;
@@ -41,4 +36,8 @@ h1 {
 
 #present {
     color: white;
+}
+
+.social-container {
+    text-align: center;
 }

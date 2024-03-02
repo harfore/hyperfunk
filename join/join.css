@@ -1,0 +1,27 @@
+.form {
+    color: white;
+    width: 90%;
+    margin: auto;
+}
+
+.list {
+    margin-right: 2.5%;
+}
+
+ul>li {
+    list-style-type: none;
+}
+
+#submit {
+    width: 13%;
+    font-size: 110%;
+    margin-top: 5%;
+    background-color: #0a368d;
+    border-color: #0a368d;
+}
+
+.option:hover {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: black;
+    color: white;
+}

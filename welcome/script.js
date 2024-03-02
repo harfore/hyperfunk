@@ -23,21 +23,21 @@ const fetchEvents = async (dmaId) => {
         // Construct HTML content for events and attractions
         let htmlContent = '';
 
-        events.slice(0, 5).forEach(event => {
+        events.slice(0, 20).forEach(event => {
             const attractions = event._embedded?.attractions || [];
             attractions.forEach(attraction => {
                 htmlContent += `<br><br><h2>${attraction.name}</h2>`;
                 htmlContent += `<p>Booking link: <u>${attraction.url}</u></p>`;
                 if (attraction.externalLinks) {
-                    htmlContent += `<p><a href="${attraction.externalLinks.youtube || '#'}">
-                    <img src="/socials/ytb.jpg" alt="youtube link" class='social-containter' width="125" height="90">
+                    htmlContent += `<div class="socials"><p><a href="${attraction.externalLinks.youtube || '#'}">
+                    <img src="/socials/ytb.jpg" alt="youtube link" class='social-container' width="60" height="auto">
                     </a></p>`;
                     htmlContent += `<p><a href="${attraction.externalLinks.spotify || '#'}">
-                    <img src="/socials/spotify.jpg" alt="spotify link" class='social-container' width="125" height="95">
+                    <img src="/socials/spotify.jpg" alt="spotify link" class='social-container' width="60" height="auto">
                     </a></p>`;
                     htmlContent += `<p><a href="${attraction.externalLinks.instagram || '#'}">
-                    <img src="/socials/instagram.png" alt="spotify link" class='social-container' width="125" height="110">
-                    </a></p>`;
+                    <img src="/socials/instagram.png" alt="spotify link" class='social-container' width="60" height="auto">
+                    </a></p></div>`;
                     htmlContent += `<p><a href="${attraction.externalLinks.homepage || '#'}">Artist Homepage</a></p>`;
                 }
                 htmlContent += `<p><img src="${attraction.images?.[0] || ''}"><br></p>`;
@@ -58,7 +58,7 @@ const fetchEvents = async (dmaId) => {
 };
 
 
-const dmaIdToFetch = 330;
+const dmaIdToFetch = 324;
 present.addEventListener('click', () => {
     fetchEvents(dmaIdToFetch);
     for (let i = 0; i < events.length; i++) {

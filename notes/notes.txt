@@ -2,3 +2,14 @@ liste de villes sur une carte
 ne pas dupliquer les css
 appliquer le font sur des div
 remplacer par l'id de la ville
+doc ticketmaster pour dmaId
+
+node.js/express
+route bdd - supabase
+diagramme UML
+
+soft skills, coordonnées au dessus,
+moins sur axa, plus de projets ada
+ajouter des éléments back (postman)
+agilité : sprint, retro+
+6FUsqu4d!25%
