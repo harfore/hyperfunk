@@ -16,9 +16,10 @@ past, upcoming are always there
 - par venues
 - pin videos/concerts
 - other tours by this artist
+- dm entre utilisateurs ?
 
 base de données concert
 
 protéger les données des utilisateurs : authentification sécurisée, le stockage sécurisé des informations sensibles
 
-api ticketmaster, api deezer, api spotify
+api ticketmaster, api deezer, api spotify, api shazam

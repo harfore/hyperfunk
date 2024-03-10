@@ -7,6 +7,11 @@
     margin-bottom: 3em;
 }
 
+.search {
+    width: 8%;
+    height: auto;
+}
+
 .who {
     margin: 10% 10% 1em;
 }
@@ -20,6 +25,16 @@
 }
 
 .poster {
-    width: 14em;
+    width: 15em;
     height: auto;
+}
+
+.poster:hover {
+    color: green;
+}
+
+.social_network {
+    width: 125px;
+    height: auto;
+    padding: 2em;
 }

@@ -5,6 +5,15 @@
     margin: auto;
 }
 
+.background {
+    background: #14181c url(/images/renny.webp) 0 -1px repeat-x;
+}
+
+.search {
+    width: 8%;
+    height: auto;
+}
+
 #flexcontent {
     margin: 2rem;
 }
@@ -12,22 +21,13 @@
 .box2 {
     width: 20em;
     height: auto;
-    margin: 2% auto 1em;
+    margin: 3% auto 1em;
 }
 
-#instagram {
+.social_network {
     width: 125px;
-    height: 130px;
-}
-
-#spotify {
-    width: 125px;
-    height: 95px;
-}
-
-#youtube {
-    width: 125px;
-    height: 100px;
+    height: auto;
+    padding: 2em;
 }
 
 @media (min-width: 1024px) {

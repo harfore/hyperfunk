@@ -29,11 +29,11 @@ const fetchEvents = async (dmaId) => {
                 htmlContent += `<br><br><h2>${attraction.name}</h2>`;
                 htmlContent += `<p>Booking link: <u>${attraction.url}</u></p>`;
                 if (attraction.externalLinks) {
-                    htmlContent += `<div class="socials"><p><a href="${attraction.externalLinks.youtube || '#'}">
-                    <img src="/socials/ytb.jpg" alt="youtube link" class='social-container' width="60" height="auto">
-                    </a></p>`;
                     htmlContent += `<p><a href="${attraction.externalLinks.spotify || '#'}">
-                    <img src="/socials/spotify.jpg" alt="spotify link" class='social-container' width="60" height="auto">
+                    <img src="/socials/spotify.png" alt="spotify link" class='social-container' width="60" height="auto">
+                    </a></p>`;
+                    htmlContent += `<div class="socials"><p><a href="${attraction.externalLinks.youtube || '#'}">
+                    <img src="/socials/youtube.png" alt="youtube link" class='social-container' width="60" height="auto">
                     </a></p>`;
                     htmlContent += `<p><a href="${attraction.externalLinks.instagram || '#'}">
                     <img src="/socials/instagram.png" alt="spotify link" class='social-container' width="60" height="auto">
@@ -61,6 +61,7 @@ const fetchEvents = async (dmaId) => {
 const dmaIdToFetch = 324;
 present.addEventListener('click', () => {
     fetchEvents(dmaIdToFetch);
+    const events = data._embedded?.events || [];
     for (let i = 0; i < events.length; i++) {
         fetchEvents(events[i])
     }
@@ -68,5 +69,4 @@ present.addEventListener('click', () => {
 
 
 // bouton atlanta
-// background
 // images
