@@ -4,6 +4,29 @@ h1 {
     font-family: 'Times New Roman', Times, serif;
 }
 
+.cities_list {
+    margin: 3em auto;
+    width: 70%;
+    display: flex;
+}
+
+.city {
+    width: 30%;
+    height: auto;
+    padding: 2em;
+    border-radius: 30px;
+}
+
+.city_picture {
+    border-radius: 15px;
+}
+
+.city:hover {
+    width: 32%;
+    height: auto;
+    border-radius: 10px;
+}
+
 .title {
     margin-top: 50px;
 }
@@ -12,15 +35,18 @@ h1 {
     font-size: 25px;
 }
 
-.presentation {
-    font-size: 20px;
-}
-
 .joinbutton {
-    padding: 20px;
+    margin: auto;
+    width: 7em;
     height: 70px;
     font-size: 20px;
     background-color: white;
+    border-radius: 10px;
+}
+
+.joinbutton:hover {
+    background-color: black;
+    color: white;
 }
 
 #buttondiv {
@@ -32,6 +58,12 @@ h1 {
     height: 70px;
     font-size: 20px;
     background-color: white;
+
+}
+
+.presentbutton:hover {
+    background-color: black;
+    color: white;
 }
 
 #present {
