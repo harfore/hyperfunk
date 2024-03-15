@@ -22,6 +22,7 @@ const fetchEvents = async (dmaId) => {
     try {
         const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
         const res = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=${dmaId}&apikey=${apiKey}`);
+
         if (!res.ok) {
             throw new Error('Failed to fetch events');
         }
@@ -35,27 +36,19 @@ const fetchEvents = async (dmaId) => {
             // htmlContent += `<p>${events.dates.start.localDate}</p>`
             const attractions = event._embedded?.attractions || [];
             attractions.forEach(attraction => {
-                htmlContent += `<div class='upcomingEvent'>`;
-                htmlContent += `<br><br><h2>${attraction.name}</h2><br>`;
-                htmlContent += `<p class='bookingLink' >Booking link: <u>${attraction.url}</u></p>`;
+                // const artist = attraction.name;
+                // const bookingLink = attraction.url;
+                // const spotifyArtistLink = attraction.externalLinks.spotify;
+                // const youtubeArtistLink = attraction.externalLinks.youtube;
+                // const instagramArtistLink = attraction.externalLinks.youtube;
+                // const artistHomepageLink = attraction.externalLinks.homepage;
+
+                htmlContent += `<br><h2>${attraction.name}</h2><br>`;
                 // htmlContent += `<p>Date: ${dates.start.localDate}</p>`;
-                if (attraction.externalLinks) {
-                    htmlContent += `<div class="social-container"><p><a href="${attraction.externalLinks.spotify || '#'}">
-                    <img src="/socials/spotify.png" alt="spotify link" class='social-media' width="60" height="auto">
-                    </a></p>`;
-                    htmlContent += `<p><a href="${attraction.externalLinks.youtube || '#'}">
-                    <img src="/socials/youtube.png" alt="youtube link" class='social-media' width="60" height="auto">
-                    </a></p>`;
-                    htmlContent += `<p><a href="${attraction.externalLinks.instagram || '#'}">
-                    <img src="/socials/instagram.png" alt="spotify link" class='social-media' width="60" height="auto">
-                    </a></p></div>`;
-                    htmlContent += `<p><a href="${attraction.externalLinks.homepage || '#'}">Artist Homepage</a></p>`;
-                }
-                htmlContent += `<p><img src="${attraction.images?.[0] || ''}"><br></p>`;
-                htmlContent += `<p><img src="${attraction.images?.[1] || ''}"><br></p>`;
+                htmlContent += `<p><img src="${attraction.images?.[0].url || ''}"><br></p>`;
                 htmlContent += `<p>${attraction.classifications?.genre?.name || ''}</p>`;
                 htmlContent += `<p>${attraction.classifications?.subGenre?.name || ''}</p>`;
-                htmlContent += `<p>${attraction.classifications?.subGenre?.name || ''}</p></div>`;
+                htmlContent += `<p>${attraction.classifications?.subGenre?.name || ''}</p>`;
             });
         });
 
@@ -69,7 +62,7 @@ const fetchEvents = async (dmaId) => {
 };
 
 
-const dmaIdToFetch = 324;
+const dmaIdToFetch = 278;
 present.addEventListener('click', () => {
     fetchEvents(dmaIdToFetch);
     const events = data._embedded?.events || [];

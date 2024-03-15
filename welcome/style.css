@@ -16,7 +16,7 @@ h1 {
 }
 
 .city {
-    width: 30%;
+    width: 31%;
     height: auto;
     padding: 2em;
     border-radius: 30px;
@@ -27,7 +27,7 @@ h1 {
 }
 
 .city:hover {
-    width: 32%;
+    width: 30%;
     height: auto;
     border-radius: 10px;
 }
@@ -78,17 +78,3 @@ h1 {
 }
 
 .upcomingEvent {}
-
-.bookingLink {
-    width: 400px;
-}
-
-
-.social-container {
-    text-align: center;
-    display: flex;
-}
-
-.social-media {
-    padding: 2em;
-}

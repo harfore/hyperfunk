@@ -1,0 +1,12 @@
+.bookingLink {
+    width: 400px;
+}
+
+.social-container {
+    text-align: center;
+    display: flex;
+}
+
+.social-media {
+    padding: 2em;
+}
