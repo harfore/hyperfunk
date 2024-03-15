@@ -17,6 +17,10 @@ past, upcoming are always there
 - pin videos/concerts
 - other tours by this artist
 - dm entre utilisateurs ?
+- test de personnalité
+- onglet concerts populaires du moment
+- onglet articles de journaux
+- page venues
 
 base de données concert
 

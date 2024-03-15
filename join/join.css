@@ -20,6 +20,10 @@ ul>li {
     border-color: #0a368d;
 }
 
+.pronounOption {
+    border-radius: 50%;
+}
+
 .option:hover {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: black;

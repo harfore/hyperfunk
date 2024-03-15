@@ -1,12 +1,21 @@
 const present = document.getElementById('los_angeles');
-const contentToHide = document.getElementById('buttondiv');
+const los_angeles = document.getElementById('buttondiv');
+const rioDeJaneiro = document.getElementById('riodejaneiro');
+const parisFrance = document.getElementById('parisFrance');
+const singapore = document.getElementById('singapore');
+const tokyoJapan = document.getElementById('tokyo');
+const amsterdam = document.getElementById('amsterdam');
+
+const contentToHide = [los_angeles, rioDeJaneiro, parisFrance, singapore, tokyoJapan, amsterdam];
 
 present.addEventListener('click', () => {
-    if (contentToHide.style.display !== 'none') {
-        contentToHide.style.display = 'none'; // Hide the content
-    } else {
-        contentToHide.style.display = 'block'; // Show the content
-    };
+    contentToHide.forEach(content => {
+        if (content.style.display !== 'none') {
+            content.style.display = 'none';
+        } else {
+            content.style.display = 'block';
+        };
+    });
 });
 
 const fetchEvents = async (dmaId) => {
@@ -22,21 +31,23 @@ const fetchEvents = async (dmaId) => {
 
         // Construct HTML content for events and attractions
         let htmlContent = '';
-
-        events.slice(0, 20).forEach(event => {
+        events.slice(0, 10).forEach(event => {
+            // htmlContent += `<p>${events.dates.start.localDate}</p>`
             const attractions = event._embedded?.attractions || [];
             attractions.forEach(attraction => {
-                htmlContent += `<br><br><h2>${attraction.name}</h2>`;
-                htmlContent += `<p>Booking link: <u>${attraction.url}</u></p>`;
+                htmlContent += `<div class='upcomingEvent'>`;
+                htmlContent += `<br><br><h2>${attraction.name}</h2><br>`;
+                htmlContent += `<p class='bookingLink' >Booking link: <u>${attraction.url}</u></p>`;
+                // htmlContent += `<p>Date: ${dates.start.localDate}</p>`;
                 if (attraction.externalLinks) {
-                    htmlContent += `<p><a href="${attraction.externalLinks.spotify || '#'}">
-                    <img src="/socials/spotify.png" alt="spotify link" class='social-container' width="60" height="auto">
+                    htmlContent += `<div class="social-container"><p><a href="${attraction.externalLinks.spotify || '#'}">
+                    <img src="/socials/spotify.png" alt="spotify link" class='social-media' width="60" height="auto">
                     </a></p>`;
-                    htmlContent += `<div class="socials"><p><a href="${attraction.externalLinks.youtube || '#'}">
-                    <img src="/socials/youtube.png" alt="youtube link" class='social-container' width="60" height="auto">
+                    htmlContent += `<p><a href="${attraction.externalLinks.youtube || '#'}">
+                    <img src="/socials/youtube.png" alt="youtube link" class='social-media' width="60" height="auto">
                     </a></p>`;
                     htmlContent += `<p><a href="${attraction.externalLinks.instagram || '#'}">
-                    <img src="/socials/instagram.png" alt="spotify link" class='social-container' width="60" height="auto">
+                    <img src="/socials/instagram.png" alt="spotify link" class='social-media' width="60" height="auto">
                     </a></p></div>`;
                     htmlContent += `<p><a href="${attraction.externalLinks.homepage || '#'}">Artist Homepage</a></p>`;
                 }
@@ -44,7 +55,7 @@ const fetchEvents = async (dmaId) => {
                 htmlContent += `<p><img src="${attraction.images?.[1] || ''}"><br></p>`;
                 htmlContent += `<p>${attraction.classifications?.genre?.name || ''}</p>`;
                 htmlContent += `<p>${attraction.classifications?.subGenre?.name || ''}</p>`;
-                htmlContent += `<p>${attraction.classifications?.subGenre?.name || ''}</p>`;
+                htmlContent += `<p>${attraction.classifications?.subGenre?.name || ''}</p></div>`;
             });
         });
 
@@ -68,5 +79,5 @@ present.addEventListener('click', () => {
 });
 
 
-// bouton atlanta
+// boutons villes
 // images

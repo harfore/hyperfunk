@@ -1,3 +1,8 @@
+.search {
+    width: 7%;
+    height: auto;
+}
+
 h1 {
     color: darkblue;
     text-align: center;
@@ -64,12 +69,26 @@ h1 {
 .presentbutton:hover {
     background-color: black;
     color: white;
+    border-color: black;
+    border: 10%;
 }
 
 #present {
     color: white;
 }
 
+.upcomingEvent {}
+
+.bookingLink {
+    width: 400px;
+}
+
+
 .social-container {
     text-align: center;
+    display: flex;
+}
+
+.social-media {
+    padding: 2em;
 }

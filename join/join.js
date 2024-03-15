@@ -12,6 +12,15 @@ const formValidation = () => {
     console.log('pronouns: ' + pronouns);
     console.log('password: ' + password);
 
+    document.getElementById("pronouns").addEventListener("change", function () {
+        var customPronounsInput = document.getElementById("customPronouns");
+        if (this.value === "custom") {
+            customPronounsInput.style.display = "block";
+        } else {
+            customPronounsInput.style.display = "none";
+        }
+    });
+
     const verifs = () => {
         if (username.length < 2 || password.length < 5) {
             alert("Usernames cannot be shorter than 2 characters.")
