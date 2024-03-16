@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .search {
     width: 8%;
     height: auto;
@@ -6,13 +10,19 @@
 .event_container {
     display: flex;
     flex-wrap: wrap;
+    padding: 2em 3em;
 }
 
 .event_item {
     width: 25%;
+    border: 1px solid rgb(187, 187, 223);
+    border-radius: 20%;
+    margin: auto;
+    background-color: black;
 }
 
 .event_image {
     width: 20em;
-    padding: 0 3em;
+    height: auto;
+    border-radius: 30%;
 }
