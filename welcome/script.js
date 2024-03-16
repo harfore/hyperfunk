@@ -1,24 +1,15 @@
-const present = document.getElementById('los_angeles');
-const los_angeles = document.getElementById('buttondiv');
-const rioDeJaneiro = document.getElementById('riodejaneiro');
-const parisFrance = document.getElementById('parisFrance');
-const singapore = document.getElementById('singapore');
-const tokyoJapan = document.getElementById('tokyo');
-const amsterdam = document.getElementById('amsterdam');
+const activateLosAngeles = document.getElementById('activateLosAngeles');
+const activateRioDeJaneiro = document.getElementById('activateRioDeJaneiro');
+const activateParisFrance = document.getElementById('activateParisFrance');
+const activateSingapore = document.getElementById('activateSingapore');
+const activateTokyoJapan = document.getElementById('activateTokyoJapan');
+const activateAmsterdam = document.getElementById('activateAmsterdam');
+const presentLosAngeles = document.getElementById('los_angeles');
 
-const contentToHide = [los_angeles, rioDeJaneiro, parisFrance, singapore, tokyoJapan, amsterdam];
-
-present.addEventListener('click', () => {
-    contentToHide.forEach(content => {
-        if (content.style.display !== 'none') {
-            content.style.display = 'none';
-        } else {
-            content.style.display = 'block';
-        };
-    });
-});
+const presentCities = [activateLosAngeles, activateRioDeJaneiro, activateParisFrance, activateSingapore, activateTokyoJapan, activateAmsterdam];
 
 const fetchEvents = async (dmaId) => {
+
     try {
         const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
         const res = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=${dmaId}&apikey=${apiKey}`);
@@ -53,24 +44,28 @@ const fetchEvents = async (dmaId) => {
         });
 
         // Update the 'present' element with constructed HTML content
-        present.innerHTML = htmlContent;
+        los_angeles.innerHTML = htmlContent;
     } catch (err) {
         console.error(err);
         // Update 'present' element with an error message
-        present.innerHTML = `<p>${err}</p>`;
+        los_angeles.innerHTML = `<p>${err}</p>`;
     };
 };
 
-
-const dmaIdToFetch = 278;
-present.addEventListener('click', () => {
-    fetchEvents(dmaIdToFetch);
-    const events = data._embedded?.events || [];
-    for (let i = 0; i < events.length; i++) {
-        fetchEvents(events[i])
-    }
+presentCities.forEach(city, () => {
+    city.addEventListener('click', () => {
+        presentCities.forEach(content => {
+            if (content !== city) {
+                if (content.style.display !== 'none') {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                };
+            };
+        });
+    });
 });
 
+fetchEvents(324);
 
 // boutons villes
-// images

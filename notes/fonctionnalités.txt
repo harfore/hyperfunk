@@ -21,6 +21,7 @@ past, upcoming are always there
 - onglet concerts populaires du moment
 - onglet articles de journaux
 - page venues
+- make the site accessible to different devices
 
 base de données concert
 
