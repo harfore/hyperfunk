@@ -34,8 +34,8 @@ const fetchEvents = async (dmaId) => {
             // const instagramArtistLink = attraction.externalLinks.youtube;
             // const artistHomepageLink = attraction.externalLinks.homepage;
             attractions.forEach(attraction => {
-
-                htmlContent += `<br><h2>${attraction.name}</h2><br>`;
+                htmlContent += `<div class="event_item">`
+                htmlContent += `<h2>${attraction.name}</h2>`;
                 console.log(attraction.name)
                 // htmlContent += `<p>Date: ${dates.start.localDate}</p>`;
                 htmlContent += `<img class="event_image" src="${attraction.images?.[0].url || ''}"><br>`;
@@ -43,15 +43,24 @@ const fetchEvents = async (dmaId) => {
                 htmlContent += `<p>${attraction.classifications?.subGenre?.name || ''}</p>`;
                 htmlContent += `<p>${attraction.classifications?.subGenre?.name || ''}</p>`;
                 htmlContent += `</div>`
-            });
-        });
 
-        // Update the 'present' element with constructed HTML content
-        los_angeles.innerHTML = htmlContent;
+            })
+        });
+        htmlContent += `</div>`;
+        presentLosAngeles.innerHTML = htmlContent;
+        const displayEventsOnResize = () => {
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                presentLosAngeles.innerHTML = htmlContent; // Re-render events
+            }
+        };
+
+        // Add event listener for screen resize
+        window.addEventListener('resize', displayEventsOnResize);
+
+
     } catch (err) {
         console.error(err);
-        // Update 'present' element with an error message
-        los_angeles.innerHTML = `<p>${err}</p>`;
+        presentLosAngeles.innerHTML = `<p>${err}</p>`;
     };
 };
 

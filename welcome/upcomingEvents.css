@@ -3,13 +3,16 @@
     height: auto;
 }
 
-.event_container {}
+.event_container {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-.upcoming_event {
-    padding: 2em;
-    width: 10%;
+.event_item {
+    width: 25%;
 }
 
 .event_image {
-    width: 30%;
+    width: 20em;
+    padding: 0 3em;
 }
