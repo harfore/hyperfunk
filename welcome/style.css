@@ -3,12 +3,6 @@
     height: auto;
 }
 
-h1 {
-    color: darkblue;
-    text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-}
-
 .cities_list {
     margin: 3em auto;
     width: 70%;

@@ -1,0 +1,15 @@
+.search {
+    width: 8%;
+    height: auto;
+}
+
+.event_container {}
+
+.upcoming_event {
+    padding: 2em;
+    width: 10%;
+}
+
+.event_image {
+    width: 30%;
+}

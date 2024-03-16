@@ -23,23 +23,26 @@ const fetchEvents = async (dmaId) => {
 
         // Construct HTML content for events and attractions
         let htmlContent = '';
+        htmlContent += `<div class="event_container">`
         events.slice(0, 10).forEach(event => {
             // htmlContent += `<p>${events.dates.start.localDate}</p>`
             const attractions = event._embedded?.attractions || [];
+            // const artist = attraction.name;
+            // const bookingLink = attraction.url;
+            // const spotifyArtistLink = attraction.externalLinks.spotify;
+            // const youtubeArtistLink = attraction.externalLinks.youtube;
+            // const instagramArtistLink = attraction.externalLinks.youtube;
+            // const artistHomepageLink = attraction.externalLinks.homepage;
             attractions.forEach(attraction => {
-                // const artist = attraction.name;
-                // const bookingLink = attraction.url;
-                // const spotifyArtistLink = attraction.externalLinks.spotify;
-                // const youtubeArtistLink = attraction.externalLinks.youtube;
-                // const instagramArtistLink = attraction.externalLinks.youtube;
-                // const artistHomepageLink = attraction.externalLinks.homepage;
 
                 htmlContent += `<br><h2>${attraction.name}</h2><br>`;
+                console.log(attraction.name)
                 // htmlContent += `<p>Date: ${dates.start.localDate}</p>`;
-                htmlContent += `<p><img src="${attraction.images?.[0].url || ''}"><br></p>`;
+                htmlContent += `<img class="event_image" src="${attraction.images?.[0].url || ''}"><br>`;
                 htmlContent += `<p>${attraction.classifications?.genre?.name || ''}</p>`;
                 htmlContent += `<p>${attraction.classifications?.subGenre?.name || ''}</p>`;
                 htmlContent += `<p>${attraction.classifications?.subGenre?.name || ''}</p>`;
+                htmlContent += `</div>`
             });
         });
 
@@ -51,20 +54,6 @@ const fetchEvents = async (dmaId) => {
         los_angeles.innerHTML = `<p>${err}</p>`;
     };
 };
-
-presentCities.forEach(city, () => {
-    city.addEventListener('click', () => {
-        presentCities.forEach(content => {
-            if (content !== city) {
-                if (content.style.display !== 'none') {
-                    content.style.display = 'none';
-                } else {
-                    content.style.display = 'block';
-                };
-            };
-        });
-    });
-});
 
 fetchEvents(324);
 
