@@ -81,3 +81,5 @@ fetchEvents(324);
 // boutons villes
 // a - text decoration: none
 // villes console.log cities.js
+// carousel tournées les plus populaires au dessus des villes
+// hide custom pronouns input

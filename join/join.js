@@ -12,24 +12,28 @@ const formValidation = () => {
     console.log('pronouns: ' + pronouns);
     console.log('password: ' + password);
 
-    document.getElementById("pronouns").addEventListener("change", function () {
-        var customPronounsInput = document.getElementById("customPronouns");
-        if (this.value === "custom") {
-            customPronounsInput.style.display = "block";
-        } else {
-            customPronounsInput.style.display = "none";
-        }
-    });
+    // document.getElementById("pathToCustomPronouns").addEventListener("click", function () {
+    //     const customPronounsInput = document.getElementById("customPronouns");
+    //     if (customPronounsInput.style.display === "none" || customPronounsInput.style.display === "") {
+    //         customPronounsInput.style.display = 'block';
+    //         console.log('displaying the input');
+    //         console.log('custom pronoun: ' + pronouns.value);
+    //     } else {
+    //         customPronounsInput.style.display = "none";
+    //         console.log('hiding the input');
+    //     }
+    // });
 
     const verifs = () => {
         if (username.length < 2 || password.length < 5) {
-            alert("Usernames cannot be shorter than 2 characters.")
+            alert("Usernames cannot be shorter than 2 characters.");
         }
     }
+
     verifs()
 }
 
-document.registration.addEventListener("submit", function (event) {
+document.registration.addEventListener("createAccount", function (event) {
     event.preventDefault();
     formValidation();
 })

@@ -1,31 +1,45 @@
-.form {
-    color: white;
-    width: 90%;
+.container {
+    display: flex;
+}
+
+.side {
+    width: 40%;
+    border: solid 1px white;
+    top: 0;
+}
+
+.sideJoinImage {
+    width: 100%;
+    height: auto;
+}
+
+.center {
+    width: 20%;
     margin: auto;
 }
 
-.list {
-    margin-right: 2.5%;
+.formInputArea {
+    width: 15em;
+    height: 3em;
+    border-radius: 20%;
+    background-color: rgb(24, 24, 24);
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 80%;
+    margin: 0.5em;
 }
 
 ul>li {
     list-style-type: none;
 }
 
-#submit {
-    width: 13%;
+#createAccount {
+    width: 8em;
     font-size: 110%;
+    font-family: "Roboto Mono", monospace;
     margin-top: 5%;
     background-color: #0a368d;
     border-color: #0a368d;
-}
-
-.pronounOption {
-    border-radius: 50%;
-}
-
-.option:hover {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: black;
-    color: white;
+    margin-bottom: 2em;
+    border-radius: 10%;
 }
