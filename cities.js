@@ -2,7 +2,7 @@ const fetchCityData = async (dmaId) => {
     try {
         const cityDataList = [];
         const ukCitiesDataList = [];
-        for (let i = 0; i < 600; i++) {
+        for (let i = 0; i < 300; i++) {
             const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
             const res = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=${dmaId}&apikey=${apiKey}`);
 
@@ -20,10 +20,10 @@ const fetchCityData = async (dmaId) => {
 
             const ukCityData = data._embedded.events[0]._embedded.venues[0].city.name;
             ukCitiesDataList.push(ukCityData);
-            console.log(`ukCitiesData: ${ukCitiesDataList}`)
+            console.log(`ukCitiesData: ${ukCitiesDataList}`);
             dmaId++;
             // console.log(data._embedded.events[i].name)
-            if (dmaId > 600) {
+            if (dmaId > 300) {
                 return 'ok!';
             }
         }
@@ -34,7 +34,7 @@ const fetchCityData = async (dmaId) => {
     }
 }
 
-fetchCityData(500)
+fetchCityData(200)
     .then(cityDataList => {
         console.log(cityDataList);
     })

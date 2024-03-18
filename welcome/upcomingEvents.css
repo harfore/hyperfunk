@@ -21,8 +21,12 @@ a {
     background-color: black;
 }
 
+.event_item:hover {
+    background: rgb(217, 216, 216);
+    background: linear-gradient(90deg, rgba(217, 216, 216, 1) 0%, rgba(0, 0, 0, 1) 60%);
+}
+
 .event_image {
     width: 20em;
     height: auto;
-    border-radius: 30%;
 }
