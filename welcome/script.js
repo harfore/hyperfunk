@@ -30,6 +30,8 @@ const fetchEvents = async (dmaId) => {
         if (dmaId === 324) {
             townToPresent = presentLosAngeles;
         };
+        const artistT = data._embedded.events[5]._embedded.attractions[0].name;
+        console.log("GREEN LIGHT: " + artistT);
 
         const events = data._embedded?.events || [];
 
