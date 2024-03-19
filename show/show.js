@@ -1,3 +1,7 @@
+import { exportSelectedEvent } from "../welcome/script";
+
+console.log('artist exported: ' + exportSelectedEvent);
+
 const showPresentation = document.getElementById('artistChoice');
 
 const fetchEvents = async (dmaId) => {

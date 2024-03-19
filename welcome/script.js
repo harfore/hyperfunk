@@ -1,3 +1,6 @@
+// export { exportSelectedEvent }
+
+
 const fetchEvents = async (dmaId) => {
     const activateLosAngeles = document.getElementById('activateLosAngeles');
     const activateRioDeJaneiro = document.getElementById('activateRioDeJaneiro');
@@ -23,8 +26,10 @@ const fetchEvents = async (dmaId) => {
 
         const data = await res.json();
 
-        const nileRodgers = data._embedded.events[11].name;
-        console.log("nile: " + nileRodgers);
+        let townToPresent = '';
+        if (dmaId === 324) {
+            townToPresent = presentLosAngeles;
+        };
 
         const events = data._embedded?.events || [];
 
@@ -33,21 +38,15 @@ const fetchEvents = async (dmaId) => {
         upcomingEventsCityHtml += `<div class="event_container">`
         // upcomingEventsCityHtml += `<h2>${_embedded.events[0]._embedded.venues[0].city.name},${_embedded.events[0]._embedded.venues[0].state.name},${_embedded.events[0]._embedded.venues[0].country.countryCode}</h2>`
         events.slice(0, 10).forEach(event => {
-            // upcomingEventsCityHtml += `<p>${events.dates.start.localDate}</p>`
             const attractions = event._embedded?.attractions || [];
-            // const bookingLink = attraction.url;
-            // const spotifyArtistLink = attraction.externalLinks.spotify;
-            // const youtubeArtistLink = attraction.externalLinks.youtube;
-            // const instagramArtistLink = attraction.externalLinks.youtube;
-            // const artistHomepageLink = attraction.externalLinks.homepage;
             attractions.forEach(attraction => {
                 const artist = attraction.name;
                 const artistPictureOne = attraction.images?.[0].url || '';
                 let musicGenre = attraction.classifications[0].genre.name || '';
                 if (musicGenre === 'Undefined') {
-                    musicGenre = '';
-                }
-                upcomingEventsCityHtml += `<div class="event_item">`;
+                    musicGenre = ' ';
+                };
+                upcomingEventsCityHtml += `<div id="event_item" class="event_item">`;
                 upcomingEventsCityHtml += `<a href="/show/show.html">`;
                 upcomingEventsCityHtml += `<h2>${artist}</h2>`;
                 // upcomingEventsCityHtml += `<p>Date: ${dates.start.localDate}</p>`;
@@ -58,15 +57,11 @@ const fetchEvents = async (dmaId) => {
             })
         });
         upcomingEventsCityHtml += `</div>`;
-        let town = '';
-        if (dmaId === 324) {
-            town = presentLosAngeles
-        }
-        town.innerHTML = upcomingEventsCityHtml;
+        townToPresent.innerHTML = upcomingEventsCityHtml;
         // showPresentation.innerHTML = artistChoiceHtml;
         const displayEventsOnResize = () => {
             if (window.matchMedia("(max-width: 768px)").matches) {
-                town.innerHTML = upcomingEventsCityHtml;
+                townToPresent.innerHTML = upcomingEventsCityHtml;
             }
         };
 
@@ -80,6 +75,12 @@ const fetchEvents = async (dmaId) => {
 };
 
 fetchEvents(324);
+
+// let exportSelectedEvent = '';
+// addEventListener.event_item('click', function exportArtist() {
+//     exportSelectedEvent = artist;
+// });
+// console.log("artist to export: " + artist);
 
 // boutons villes
 // a - text decoration: none
@@ -101,3 +102,7 @@ fetchEvents(324);
 // htmlContent += `<p class='bookingLink' >Booking link: <u>${attraction.url}</u></p>`;
 // htmlContent += `<p><a href="${attraction.externalLinks.homepage || '#'}">Artist Homepage</a></p>`;
 // pricesRange;
+// - page show
+// - villes
+// - refacto
+// - mettre en ligne
