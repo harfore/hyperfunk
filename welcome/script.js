@@ -1,6 +1,3 @@
-// export { exportSelectedEvent }
-
-
 const fetchEvents = async (dmaId) => {
     const activateLosAngeles = document.getElementById('activateLosAngeles');
     const activateRioDeJaneiro = document.getElementById('activateRioDeJaneiro');
@@ -27,40 +24,62 @@ const fetchEvents = async (dmaId) => {
         const data = await res.json();
 
         let townToPresent = '';
-        if (dmaId === 324) {
+        if (dmaId === 326) {
             townToPresent = presentLosAngeles;
         };
-        const artistT = data._embedded.events[5]._embedded.attractions[0].name;
-        console.log("GREEN LIGHT: " + artistT);
 
         const events = data._embedded?.events || [];
+        // const eventName = data._embedded?.events[0].name || [];
+        const eventDate = data._embedded?.events[0].dates?.start?.localDate || [];
+        const eventPictureOne = data._embedded?.events[0].images[0].url || [];
+        console.log(eventPictureOne);
+        const artistPictureOne = data._embedded.events[0]._embedded.attractions[0].images[0].url || [];
 
         // Construct HTML content for events and attractions
         let upcomingEventsCityHtml = '';
         upcomingEventsCityHtml += `<div class="event_container">`
         // upcomingEventsCityHtml += `<h2>${_embedded.events[0]._embedded.venues[0].city.name},${_embedded.events[0]._embedded.venues[0].state.name},${_embedded.events[0]._embedded.venues[0].country.countryCode}</h2>`
-        events.slice(0, 10).forEach(event => {
+        events.slice(0, 15).forEach(event => {
+            const eventName = event.name;
+            const eventDate = event.dates?.start?.localDate;
+            const eventImage = event.images[0].url;
+            upcomingEventsCityHtml += `<div class="event_item">`;
+            upcomingEventsCityHtml += `<a href="/show/show.html">`;
+            upcomingEventsCityHtml += `<h2>${eventName}</h2>`;
+            upcomingEventsCityHtml += `<img class="event_image" src="${eventImage}"/>`
+            upcomingEventsCityHtml += `<div class="event_attraction">`
             const attractions = event._embedded?.attractions || [];
             attractions.forEach(attraction => {
+                upcomingEventsCityHtml += `<div class="event_attraction">`
                 const artist = attraction.name;
-                const artistPictureOne = attraction.images?.[0].url || '';
-                let musicGenre = attraction.classifications[0].genre.name || '';
+                const artistPictureOne = attraction.images?.[0].url
+                upcomingEventsCityHtml += `<h2>${artist}</h2><br>`
+                upcomingEventsCityHtml += `<h4>${eventDate}</h4>`;
+                let musicGenre = event._embedded.attractions[0].classifications[0].genre.name || '';
                 if (musicGenre === 'Undefined') {
                     musicGenre = ' ';
                 };
-                upcomingEventsCityHtml += `<div id="event_item" class="event_item">`;
-                upcomingEventsCityHtml += `<a href="/show/show.html">`;
-                upcomingEventsCityHtml += `<h2>${artist}</h2>`;
                 // upcomingEventsCityHtml += `<p>Date: ${dates.start.localDate}</p>`;
-                upcomingEventsCityHtml += `<img class="event_image" src="${artistPictureOne}"><br>`;
-                upcomingEventsCityHtml += `<p class='musicGenre'>${musicGenre}`;
+                upcomingEventsCityHtml += `<img class="artist_image" src="${artistPictureOne}"><br>`;
+                upcomingEventsCityHtml += `<p class='musicGenre'>${musicGenre}<br>`;
                 upcomingEventsCityHtml += `</a>`;
+                upcomingEventsCityHtml += `</div>`
+                upcomingEventsCityHtml += `</div>`
                 upcomingEventsCityHtml += `</div>`;
             })
         });
         upcomingEventsCityHtml += `</div>`;
         townToPresent.innerHTML = upcomingEventsCityHtml;
         // showPresentation.innerHTML = artistChoiceHtml;
+
+        document.querySelectorAll('.event_item').forEach(item => {
+            item.addEventListener('click', function () {
+                const clickedArtist = this.querySelector('h2').textContent;
+                console.log("Clicked on event item. Artist: " + clickedArtist);
+                module.exports = clickedArtist;
+            })
+        })
+
         const displayEventsOnResize = () => {
             if (window.matchMedia("(max-width: 768px)").matches) {
                 townToPresent.innerHTML = upcomingEventsCityHtml;
@@ -76,13 +95,7 @@ const fetchEvents = async (dmaId) => {
     };
 };
 
-fetchEvents(324);
-
-// let exportSelectedEvent = '';
-// addEventListener.event_item('click', function exportArtist() {
-//     exportSelectedEvent = artist;
-// });
-// console.log("artist to export: " + artist);
+fetchEvents(326);
 
 // boutons villes
 // a - text decoration: none

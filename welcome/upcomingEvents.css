@@ -2,6 +2,25 @@ a {
     text-decoration: none;
 }
 
+#main {
+    display: flex;
+}
+
+.left {
+    width: 15%;
+    background-color: brown;
+}
+
+.center {
+    width: 70%;
+    margin: auto;
+}
+
+.right {
+    width: 15%;
+    background-color: brown;
+}
+
 .search {
     width: 8%;
     height: auto;
@@ -13,20 +32,24 @@ a {
     padding: 2em 3em;
 }
 
+.eventAttraction {
+    display: flex;
+    /*A COMPLETER*/
+}
+
 .event_item {
-    width: 25%;
-    border: 1px solid rgb(187, 187, 223);
+    width: 40%;
+    /* border: 1px solid rgb(187, 187, 223); */
     border-radius: 20%;
     margin: auto;
-    background-color: black;
 }
 
-.event_item:hover {
+.event_item_title:hover {
     background: rgb(217, 216, 216);
-    background: linear-gradient(90deg, rgba(217, 216, 216, 1) 0%, rgba(0, 0, 0, 1) 60%);
+    background: linear-gradient(90deg, rgb(170, 169, 169) 0%, rgba(0, 0, 0, 1) 55%);
 }
 
-.event_image {
+.artist_image {
     width: 20em;
     height: auto;
 }
