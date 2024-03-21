@@ -47,6 +47,11 @@ a {
     font-size: 1rem;
 }
 
+.event_image {
+    width: 35%;
+    height: auto;
+}
+
 .event_attractions {
     display: flex;
     margin: auto;
