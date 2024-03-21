@@ -45,29 +45,30 @@ const fetchEvents = async (dmaId) => {
             const eventImage = event.images[0].url;
             upcomingEventsCityHtml += `<div class="event_item">`;
             upcomingEventsCityHtml += `<a href="/show/show.html">`;
+            upcomingEventsCityHtml += `<div class="eventPresentation">`
             upcomingEventsCityHtml += `<h2>${eventName}</h2>`;
             upcomingEventsCityHtml += `<img class="event_image" src="${eventImage}"/>`
-            upcomingEventsCityHtml += `<div class="event_attraction">`
+            upcomingEventsCityHtml += `<h4>${eventDate}</h4>`;
+            upcomingEventsCityHtml += `</div>`
+            upcomingEventsCityHtml += `<div class="event_attractions">`
             const attractions = event._embedded?.attractions || [];
             attractions.forEach(attraction => {
                 upcomingEventsCityHtml += `<div class="event_attraction">`
                 const artist = attraction.name;
-                const artistPictureOne = attraction.images?.[0].url
-                upcomingEventsCityHtml += `<h2>${artist}</h2><br>`
-                upcomingEventsCityHtml += `<h4>${eventDate}</h4>`;
+                const artistPictureOne = attraction.images?.[0].url;
+                upcomingEventsCityHtml += `<h2>${artist}</h2>`
                 let musicGenre = event._embedded.attractions[0].classifications[0].genre.name || '';
                 if (musicGenre === 'Undefined') {
                     musicGenre = ' ';
                 };
-                // upcomingEventsCityHtml += `<p>Date: ${dates.start.localDate}</p>`;
                 upcomingEventsCityHtml += `<img class="artist_image" src="${artistPictureOne}"><br>`;
                 upcomingEventsCityHtml += `<p class='musicGenre'>${musicGenre}<br>`;
                 upcomingEventsCityHtml += `</a>`;
-                upcomingEventsCityHtml += `</div>`
-                upcomingEventsCityHtml += `</div>`
                 upcomingEventsCityHtml += `</div>`;
-            })
+            });
+            upcomingEventsCityHtml += `</div>`;
         });
+        upcomingEventsCityHtml += `</div>`;
         upcomingEventsCityHtml += `</div>`;
         townToPresent.innerHTML = upcomingEventsCityHtml;
         // showPresentation.innerHTML = artistChoiceHtml;
