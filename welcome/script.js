@@ -30,9 +30,8 @@ const fetchEvents = async (dmaId) => {
 
         const events = data._embedded?.events || [];
         // const eventName = data._embedded?.events[0].name || [];
-        const eventDate = data._embedded?.events[0].dates?.start?.localDate || [];
-        const eventPictureOne = data._embedded?.events[0].images[0].url || [];
-        console.log(eventPictureOne);
+        // const eventDate = data._embedded?.events[0].dates?.start?.localDate || [];
+        //const eventPictureOne = data._embedded?.events[0].images[0].url || [];
         const artistPictureOne = data._embedded.events[0]._embedded.attractions[0].images[0].url || [];
 
         // Construct HTML content for events and attractions
@@ -45,18 +44,18 @@ const fetchEvents = async (dmaId) => {
             const eventImage = event.images[0].url;
             upcomingEventsCityHtml += `<div class="event_item">`;
             upcomingEventsCityHtml += `<a href="/show/show.html">`;
-            upcomingEventsCityHtml += `<div class="eventPresentation">`
+            upcomingEventsCityHtml += `<div class="eventPresentation">`;
             upcomingEventsCityHtml += `<h2>${eventName}</h2>`;
-            upcomingEventsCityHtml += `<img class="event_image" src="${eventImage}"/>`
+            upcomingEventsCityHtml += `<img class="event_image" src="${eventImage}"/>`;
             upcomingEventsCityHtml += `<h4>${eventDate}</h4>`;
-            upcomingEventsCityHtml += `</div>`
-            upcomingEventsCityHtml += `<div class="event_attractions">`
+            upcomingEventsCityHtml += `</div>`;
+            upcomingEventsCityHtml += `<div class="event_attractions">`;
             const attractions = event._embedded?.attractions || [];
             attractions.forEach(attraction => {
-                upcomingEventsCityHtml += `<div class="event_attraction">`
+                upcomingEventsCityHtml += `<div class="event_attraction">`;
                 const artist = attraction.name;
                 const artistPictureOne = attraction.images?.[0].url;
-                upcomingEventsCityHtml += `<h2>${artist}</h2>`
+                upcomingEventsCityHtml += `<h2>${artist}</h2>`;
                 let musicGenre = event._embedded.attractions[0].classifications[0].genre.name || '';
                 if (musicGenre === 'Undefined') {
                     musicGenre = ' ';
@@ -66,6 +65,7 @@ const fetchEvents = async (dmaId) => {
                 upcomingEventsCityHtml += `</a>`;
                 upcomingEventsCityHtml += `</div>`;
             });
+            upcomingEventsCityHtml += `</div>`;
             upcomingEventsCityHtml += `</div>`;
         });
         upcomingEventsCityHtml += `</div>`;
