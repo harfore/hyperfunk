@@ -1,5 +1,9 @@
-const clickedArtist = require('../welcome/script.js')
-console.log(clickedArtist);
+import { clickedArtist } from '../welcome/script.js';
+
+const clicked = () => {
+    console.log(clickedArtist);
+}
+clicked();
 
 // const showPresentation = document.getElementById('artistChoice');
 

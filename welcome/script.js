@@ -1,4 +1,4 @@
-const fetchEvents = async (dmaId) => {
+const fetchEventsTicketmaster = async (dmaId) => {
     const activateLosAngeles = document.getElementById('activateLosAngeles');
     const activateRioDeJaneiro = document.getElementById('activateRioDeJaneiro');
     const activateParisFrance = document.getElementById('activateParisFrance');
@@ -34,12 +34,11 @@ const fetchEvents = async (dmaId) => {
         //const eventPictureOne = data._embedded?.events[0].images[0].url || [];
         const artistPictureOne = data._embedded.events[0]._embedded.attractions[0].images[0].url || [];
 
-        // Construct HTML content for events and attractions
         let upcomingEventsCityHtml = '';
         upcomingEventsCityHtml += `<div class="event_container">`
         // upcomingEventsCityHtml += `<h2>${_embedded.events[0]._embedded.venues[0].city.name},${_embedded.events[0]._embedded.venues[0].state.name},${_embedded.events[0]._embedded.venues[0].country.countryCode}</h2>`
         events.slice(0, 15).forEach(event => {
-            const eventName = event.name;
+            window.eventName = event.name;
             const eventDate = event.dates?.start?.localDate;
             const eventImage = event.images[0].url;
             upcomingEventsCityHtml += `<div class="event_item">`;
@@ -67,6 +66,7 @@ const fetchEvents = async (dmaId) => {
             });
             upcomingEventsCityHtml += `</div>`;
             upcomingEventsCityHtml += `</div>`;
+            console.log("eventNameInsideFetch: " + eventName)
         });
         upcomingEventsCityHtml += `</div>`;
         upcomingEventsCityHtml += `</div>`;
@@ -78,8 +78,8 @@ const fetchEvents = async (dmaId) => {
                 const clickedArtist = this.querySelector('h2').textContent;
                 console.log("Clicked on event item. Artist: " + clickedArtist);
                 module.exports = clickedArtist;
-            })
-        })
+            });
+        });
 
         const displayEventsOnResize = () => {
             if (window.matchMedia("(max-width: 768px)").matches) {
@@ -96,7 +96,8 @@ const fetchEvents = async (dmaId) => {
     };
 };
 
-fetchEvents(326);
+fetchEventsTicketmaster(326);
+console.log("eventNameOutsideFetch: " + window.eventName);
 
 // boutons villes
 // a - text decoration: none
@@ -122,3 +123,4 @@ fetchEvents(326);
 // - villes
 // - refacto
 // - mettre en ligne
+// - scrapping
