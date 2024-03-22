@@ -11,7 +11,6 @@ const fetchEventsTicketmaster = async (dmaId) => {
     const presentSingapore = document.getElementById('presentSingapore');
     const presentTokyoJapan = document.getElementById('presentTokyoJapan');
     const presentAmsterdam = document.getElementById('presentAmsterdam');
-    const showPresentation = document.getElementById('artistChoice');
 
     try {
         const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
@@ -24,14 +23,17 @@ const fetchEventsTicketmaster = async (dmaId) => {
         const data = await res.json();
 
         let townToPresent = '';
-        if (dmaId === 326) {
+        if (dmaId === 324) {
             townToPresent = presentLosAngeles;
         };
 
         const events = data._embedded?.events || [];
+        const urlToFetch = res;
+        console.log("wOOds: " + urlToFetch)
         const eventHeadline = "data._embedded?.events[0].name || []";
         const pathToEventHeadline = eventHeadline.toString();
         console.log("headline: " + pathToEventHeadline);
+
         // const eventDate = data._embedded?.events[0].dates?.start?.localDate || [];
         //const eventPictureOne = data._embedded?.events[0].images[0].url || [];
         const artistPictureOne = data._embedded.events[0]._embedded.attractions[0].images[0].url || [];
@@ -77,10 +79,9 @@ const fetchEventsTicketmaster = async (dmaId) => {
         document.querySelectorAll('.event_item').forEach(item => {
             item.addEventListener('click', function () {
                 const clickedArtist = this.querySelector('h2').textContent;
-                const clickedArtistPath = eventHeadline;
-                console.log("path: " + clickedArtistPath)
+                sessionStorage.setItem("urlToFetch", urlToFetch);
                 sessionStorage.setItem("clickedArtist", clickedArtist);
-                sessionStorage.setItem("path to clicked artist ", pathToEventHeadline);
+                sessionStorage.setItem("path to clicked artist", pathToEventHeadline);
             });
         });
 
@@ -99,7 +100,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
     };
 };
 
-fetchEventsTicketmaster(326);
+fetchEventsTicketmaster(324);
 
 // boutons villes
 // a - text decoration: none
