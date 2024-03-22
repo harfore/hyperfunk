@@ -29,7 +29,9 @@ const fetchEventsTicketmaster = async (dmaId) => {
         };
 
         const events = data._embedded?.events || [];
-        // const eventName = data._embedded?.events[0].name || [];
+        const eventHeadline = "data._embedded?.events[0].name || []";
+        const pathToEventHeadline = eventHeadline.toString();
+        console.log("headline: " + pathToEventHeadline);
         // const eventDate = data._embedded?.events[0].dates?.start?.localDate || [];
         //const eventPictureOne = data._embedded?.events[0].images[0].url || [];
         const artistPictureOne = data._embedded.events[0]._embedded.attractions[0].images[0].url || [];
@@ -38,7 +40,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
         upcomingEventsCityHtml += `<div class="event_container">`
         // upcomingEventsCityHtml += `<h2>${_embedded.events[0]._embedded.venues[0].city.name},${_embedded.events[0]._embedded.venues[0].state.name},${_embedded.events[0]._embedded.venues[0].country.countryCode}</h2>`
         events.slice(0, 15).forEach(event => {
-            window.eventName = event.name;
+            const eventName = event.name;
             const eventDate = event.dates?.start?.localDate;
             const eventImage = event.images[0].url;
             upcomingEventsCityHtml += `<div class="event_item">`;
@@ -66,7 +68,6 @@ const fetchEventsTicketmaster = async (dmaId) => {
             });
             upcomingEventsCityHtml += `</div>`;
             upcomingEventsCityHtml += `</div>`;
-            console.log("eventNameInsideFetch: " + eventName)
         });
         upcomingEventsCityHtml += `</div>`;
         upcomingEventsCityHtml += `</div>`;
@@ -76,8 +77,10 @@ const fetchEventsTicketmaster = async (dmaId) => {
         document.querySelectorAll('.event_item').forEach(item => {
             item.addEventListener('click', function () {
                 const clickedArtist = this.querySelector('h2').textContent;
-                console.log("Clicked on event item. Artist: " + clickedArtist);
-                module.exports = clickedArtist;
+                const clickedArtistPath = eventHeadline;
+                console.log("path: " + clickedArtistPath)
+                sessionStorage.setItem("clickedArtist", clickedArtist);
+                sessionStorage.setItem("path to clicked artist ", pathToEventHeadline);
             });
         });
 
@@ -97,7 +100,6 @@ const fetchEventsTicketmaster = async (dmaId) => {
 };
 
 fetchEventsTicketmaster(326);
-console.log("eventNameOutsideFetch: " + window.eventName);
 
 // boutons villes
 // a - text decoration: none

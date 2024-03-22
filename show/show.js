@@ -1,24 +1,25 @@
-import { clickedArtist } from '../welcome/script.js';
+const clickedArtist = sessionStorage.getItem("clickedArtist");
+const pathToArtist = sessionStorage.getItem("path to clicked artist ");
 
-const clicked = () => {
-    console.log(clickedArtist);
-}
-clicked();
+console.log("FRE: " + clickedArtist);
+console.log("AK: " + pathToArtist);
 
-// const showPresentation = document.getElementById('artistChoice');
 
-// const fetchEvents = async (dmaId) => {
+const showPresentation = document.getElementById('artistChoice');
 
-//     try {
-//         const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
-//         const res = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=${dmaId}&apikey=${apiKey}`);
+const fetchEvents = async (dmaId) => {
 
-//         if (!res.ok) {
-//             throw new Error('Failed to fetch events');
-//         }
+    try {
+        const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
+        const res = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=${dmaId}&apikey=${apiKey}`);
 
-//         const data = await res.json();
-//         const events = data._embedded?.events || [];
+        if (!res.ok) {
+            throw new Error('Failed to fetch events');
+        }
+
+        const data = await res.json();
+        const events = data._embedded?.events || [];
+    }} // TAKE OFF
 
 //         // Construct HTML content for events and attractions
 //         let upcomingEventsCityHtml = '';
