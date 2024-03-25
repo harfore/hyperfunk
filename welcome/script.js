@@ -14,6 +14,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
 
     try {
         const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
+        const showUrlToFetch = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=${dmaId}&apikey=${apiKey}`;
         const res = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=${dmaId}&apikey=${apiKey}`);
 
         if (!res.ok) {
@@ -28,15 +29,8 @@ const fetchEventsTicketmaster = async (dmaId) => {
         };
 
         const events = data._embedded?.events || [];
-        const urlToFetch = res;
-        console.log("wOOds: " + urlToFetch)
-        const eventHeadline = "data._embedded?.events[0].name || []";
-        const pathToEventHeadline = eventHeadline.toString();
-        console.log("headline: " + pathToEventHeadline);
 
-        // const eventDate = data._embedded?.events[0].dates?.start?.localDate || [];
-        //const eventPictureOne = data._embedded?.events[0].images[0].url || [];
-        const artistPictureOne = data._embedded.events[0]._embedded.attractions[0].images[0].url || [];
+        // const artistPictureOne = data._embedded.events[0]._embedded.attractions[0].images[0].url || [];
 
         let upcomingEventsCityHtml = '';
         upcomingEventsCityHtml += `<div class="event_container">`
@@ -44,7 +38,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
         events.slice(0, 15).forEach(event => {
             const eventName = event.name;
             const eventDate = event.dates?.start?.localDate;
-            const eventImage = event.images[0].url;
+            // const eventImage = event.images[0].url;
             upcomingEventsCityHtml += `<div class="event_item">`;
             upcomingEventsCityHtml += `<a href="/show/show.html">`;
             upcomingEventsCityHtml += `<div class="eventPresentation">`;
@@ -68,27 +62,25 @@ const fetchEventsTicketmaster = async (dmaId) => {
                 upcomingEventsCityHtml += `</a>`;
                 upcomingEventsCityHtml += `</div>`;
             });
+            document.querySelectorAll('.event_item').forEach(item => {
+                item.addEventListener('click', function () {
+                    const clickedArtist = this.querySelector('h2').textContent;
+                    sessionStorage.setItem("urlToFetch", showUrlToFetch);
+                    sessionStorage.setItem("clickedArtist", clickedArtist);
+                    // sessionStorage.setItem("eventImage", eventImage);
+                });
+            });
             upcomingEventsCityHtml += `</div>`;
             upcomingEventsCityHtml += `</div>`;
         });
         upcomingEventsCityHtml += `</div>`;
         upcomingEventsCityHtml += `</div>`;
         townToPresent.innerHTML = upcomingEventsCityHtml;
-        // showPresentation.innerHTML = artistChoiceHtml;
-
-        document.querySelectorAll('.event_item').forEach(item => {
-            item.addEventListener('click', function () {
-                const clickedArtist = this.querySelector('h2').textContent;
-                sessionStorage.setItem("urlToFetch", urlToFetch);
-                sessionStorage.setItem("clickedArtist", clickedArtist);
-                sessionStorage.setItem("path to clicked artist", pathToEventHeadline);
-            });
-        });
 
         const displayEventsOnResize = () => {
             if (window.matchMedia("(max-width: 768px)").matches) {
                 townToPresent.innerHTML = upcomingEventsCityHtml;
-            }
+            };
         };
 
         window.addEventListener('resize', displayEventsOnResize);
@@ -105,6 +97,7 @@ fetchEventsTicketmaster(324);
 // boutons villes
 // a - text decoration: none
 // villes console.log cities.js
+// hide overflow
 // carousel tournées les plus populaires au dessus des villes
 // hide custom pronouns input
 // décalage

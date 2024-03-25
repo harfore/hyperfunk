@@ -1,16 +1,14 @@
-const showEvent = async (dmaId) => {
-    const clickedArtist = sessionStorage.getItem("clickedArtist");
-    const pathToArtist = sessionStorage.getItem("path to clicked artist");
+const showEvent = async () => {
+    const eventHeadline = sessionStorage.getItem("clickedArtist");
     const urlToFetch = sessionStorage.getItem("urlToFetch");
-    console.log("FRE: " + clickedArtist);
-    console.log("woods: " + urlToFetch);
+    const eventImage = sessionStorage.getItem("eventImage");
+    console.log("FRE: " + eventHeadline);
+    console.log("event image :" + eventImage);
 
     const showPresentation = document.getElementById('artistChoice');
 
     try {
-        const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
         const res = await fetch(urlToFetch);
-        console.log("url: " + urlToFetch);
 
         if (!res.ok) {
             throw new Error('Failed to fetch events');
@@ -20,19 +18,18 @@ const showEvent = async (dmaId) => {
 
         let showEventHtmlContent = '';
 
-        const eventName = pathToArtist;
-
-        showEventHtmlContent += `<h2>${pathToArtist}</h2>`
+        // showEventHtmlContent += `<img src="${eventImage}"/>`;
+        showEventHtmlContent += `<h2>${eventHeadline}</h2>`;
 
         showPresentation.innerHTML = showEventHtmlContent;
     } catch (err) {
-        console.error(``)
+        console.error(`${err}`)
         showPresentation.innerHTML = `<p>${err}</p>`
     }
 }
 
-showEvent(324)
-
+showEvent(324);
+// FIX IMAGE LISTENER
 
 //         // Construct HTML content for events and attractions
 //         let upcomingEventsCityHtml = '';
