@@ -30,7 +30,9 @@ const fetchEventsTicketmaster = async (dmaId) => {
 
         const events = data._embedded?.events || [];
 
-        // const artistPictureOne = data._embedded.events[0]._embedded.attractions[0].images[0].url || [];
+        // const eventDate = data._embedded?.events[0].dates?.start?.localDate || [];
+        const eventPictureOne = data._embedded?.events[0].images[0].url || [];
+        const artistPictureOne = data._embedded.events[0]._embedded.attractions[0].images[0].url || [];
 
         let upcomingEventsCityHtml = '';
         upcomingEventsCityHtml += `<div class="event_container">`
@@ -38,7 +40,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
         events.slice(0, 15).forEach(event => {
             const eventName = event.name;
             const eventDate = event.dates?.start?.localDate;
-            // const eventImage = event.images[0].url;
+            const eventImage = event.images[0].url;
             upcomingEventsCityHtml += `<div class="event_item">`;
             upcomingEventsCityHtml += `<a href="/show/show.html">`;
             upcomingEventsCityHtml += `<div class="eventPresentation">`;
@@ -62,20 +64,23 @@ const fetchEventsTicketmaster = async (dmaId) => {
                 upcomingEventsCityHtml += `</a>`;
                 upcomingEventsCityHtml += `</div>`;
             });
-            document.querySelectorAll('.event_item').forEach(item => {
-                item.addEventListener('click', function () {
-                    const clickedArtist = this.querySelector('h2').textContent;
-                    sessionStorage.setItem("urlToFetch", showUrlToFetch);
-                    sessionStorage.setItem("clickedArtist", clickedArtist);
-                    // sessionStorage.setItem("eventImage", eventImage);
-                });
-            });
             upcomingEventsCityHtml += `</div>`;
             upcomingEventsCityHtml += `</div>`;
         });
         upcomingEventsCityHtml += `</div>`;
         upcomingEventsCityHtml += `</div>`;
         townToPresent.innerHTML = upcomingEventsCityHtml;
+
+        document.querySelectorAll('.event_item').forEach(item => {
+            item.addEventListener('click', function () {
+                const clickedArtist = this.querySelector('h2').textContent;
+                const eventImage = this.querySelector(".event_image").src;
+                sessionStorage.setItem("urlToFetch", showUrlToFetch);
+                sessionStorage.setItem("clickedArtist", clickedArtist);
+                sessionStorage.setItem("eventImage", eventImage);
+                console.log("eventImage: " + eventPictureOne);
+            });
+        });
 
         const displayEventsOnResize = () => {
             if (window.matchMedia("(max-width: 768px)").matches) {

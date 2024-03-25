@@ -3,7 +3,7 @@ const showEvent = async () => {
     const urlToFetch = sessionStorage.getItem("urlToFetch");
     const eventImage = sessionStorage.getItem("eventImage");
     console.log("FRE: " + eventHeadline);
-    console.log("event image :" + eventImage);
+    console.log("eventImage: " + eventImage);
 
     const showPresentation = document.getElementById('artistChoice');
 
@@ -18,17 +18,16 @@ const showEvent = async () => {
 
         let showEventHtmlContent = '';
 
-        // showEventHtmlContent += `<img src="${eventImage}"/>`;
+        showEventHtmlContent += `<img src="${eventImage}"/>`;
         showEventHtmlContent += `<h2>${eventHeadline}</h2>`;
-
         showPresentation.innerHTML = showEventHtmlContent;
     } catch (err) {
         console.error(`${err}`)
-        showPresentation.innerHTML = `<p>${err}</p>`
+        showPresentation.innerHTML = `<p>${err}</p>`;
     }
 }
 
-showEvent(324);
+showEvent();
 // FIX IMAGE LISTENER
 
 //         // Construct HTML content for events and attractions
