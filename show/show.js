@@ -1,36 +1,24 @@
-const showEvent = async () => {
+const displayEvent = async () => {
     const eventHeadline = sessionStorage.getItem("clickedArtist");
-    const urlToFetch = sessionStorage.getItem("urlToFetch");
     const eventImage = sessionStorage.getItem("eventImage");
+    const eventDate = sessionStorage.getItem("eventDate");
+    const eventVenue = sessionStorage.getItem("eventVenue");
 
     const showPresentation = document.getElementById('artistChoice');
 
-    try {
-        const res = await fetch(urlToFetch);
 
-        if (!res.ok) {
-            throw new Error('Failed to fetch events');
-        }
+    let showEventHtmlContent = '';
 
-        const data = await res.json();
-
-        let showEventHtmlContent = '';
-
-        showEventHtmlContent += `<img src="${eventImage}"/>`;
-        showEventHtmlContent += `<h2>${eventHeadline}</h2>`;
-        showPresentation.innerHTML = showEventHtmlContent;
-    } catch (err) {
-        console.error(`${err}`)
-        showPresentation.innerHTML = `<p>${err}</p>`;
-    }
+    showEventHtmlContent += `<img class="eventImage" src="${eventImage}"/>`;
+    showEventHtmlContent += `<h2>${eventHeadline}</h2>`;
+    showEventHtmlContent += `<h3>${eventDate}</h3>`;
+    showEventHtmlContent += `<h3>${eventVenue}</h3>`;
+    showPresentation.innerHTML = showEventHtmlContent;
 }
 
-showEvent();
-// FIX IMAGE LISTENER
+displayEvent();
 
 //         // Construct HTML content for events and attractions
-//         let upcomingEventsCityHtml = '';
-//         let artistChoiceHtml = '';
 //         upcomingEventsCityHtml += `<div class="event_container">`
 //         // upcomingEventsCityHtml += `<h2>${_embedded.events[0]._embedded.venues[0].city.name},${_embedded.events[0]._embedded.venues[0].state.name},${_embedded.events[0]._embedded.venues[0].country.countryCode}</h2>`
 //         events.slice(0, 10).forEach(event => {

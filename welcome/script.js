@@ -46,9 +46,9 @@ const fetchEventsTicketmaster = async (dmaId) => {
             upcomingEventsCityHtml += `<a href="/show/show.html">`;
             upcomingEventsCityHtml += `<div class="eventPresentation">`;
             upcomingEventsCityHtml += `<h2>${eventName}</h2>`;
-            upcomingEventsCityHtml += `<img class="event_image" src="${eventImage}"/>`;
+            upcomingEventsCityHtml += `<img class="eventImage" src="${eventImage}"/>`;
             upcomingEventsCityHtml += `<h4 class="eventDate">${eventDate}</h4>`;
-            upcomingEventsCityHtml += `<h3>${eventVenue}</h3>`;
+            upcomingEventsCityHtml += `<h3 class="eventVenue">${eventVenue}</h3>`;
             upcomingEventsCityHtml += `</div>`;
             upcomingEventsCityHtml += `<div class="event_attractions">`;
             const attractions = event._embedded?.attractions || [];
@@ -76,12 +76,14 @@ const fetchEventsTicketmaster = async (dmaId) => {
         document.querySelectorAll('.event_item').forEach(item => {
             item.addEventListener('click', function () {
                 const clickedArtist = this.querySelector('h2').textContent;
-                const eventImage = this.querySelector(".event_image").src;
-                const eventDate = this.querySelector(".eventDate")
+                const eventImage = this.querySelector(".eventImage").src;
+                const eventDate = this.querySelector(".eventDate").textContent;
+                const eventVenue = this.querySelector(".eventVenue").textContent;
                 sessionStorage.setItem("urlToFetch", showUrlToFetch);
                 sessionStorage.setItem("clickedArtist", clickedArtist);
                 sessionStorage.setItem("eventImage", eventImage);
-                sessionStorage.setItem("eventDate",)
+                sessionStorage.setItem("eventDate", eventDate);
+                sessionStorage.setItem("eventVenue", eventVenue);
             });
         });
 
