@@ -30,23 +30,25 @@ const fetchEventsTicketmaster = async (dmaId) => {
 
         const events = data._embedded?.events || [];
 
-        // const eventDate = data._embedded?.events[0].dates?.start?.localDate || [];
-        const eventPictureOne = data._embedded?.events[0].images[0].url || [];
-        const artistPictureOne = data._embedded.events[0]._embedded.attractions[0].images[0].url || [];
+        const eventsCity = data._embedded.events[0]._embedded.venues[0].city.name;
+        const eventCountry = data._embedded.events[0]._embedded.venues[0].country.name;
+
 
         let upcomingEventsCityHtml = '';
+        upcomingEventsCityHtml += `<div class="eventCity"><h2>Upcoming events in ${eventsCity}, ${eventCountry}</h2></div>`;
         upcomingEventsCityHtml += `<div class="event_container">`
-        // upcomingEventsCityHtml += `<h2>${_embedded.events[0]._embedded.venues[0].city.name},${_embedded.events[0]._embedded.venues[0].state.name},${_embedded.events[0]._embedded.venues[0].country.countryCode}</h2>`
         events.slice(0, 15).forEach(event => {
             const eventName = event.name;
             const eventDate = event.dates?.start?.localDate;
             const eventImage = event.images[0].url;
+            const eventVenue = event._embedded.venues[0].name || '';
             upcomingEventsCityHtml += `<div class="event_item">`;
             upcomingEventsCityHtml += `<a href="/show/show.html">`;
             upcomingEventsCityHtml += `<div class="eventPresentation">`;
             upcomingEventsCityHtml += `<h2>${eventName}</h2>`;
             upcomingEventsCityHtml += `<img class="event_image" src="${eventImage}"/>`;
-            upcomingEventsCityHtml += `<h4>${eventDate}</h4>`;
+            upcomingEventsCityHtml += `<h4 class="eventDate">${eventDate}</h4>`;
+            upcomingEventsCityHtml += `<h3>${eventVenue}</h3>`;
             upcomingEventsCityHtml += `</div>`;
             upcomingEventsCityHtml += `<div class="event_attractions">`;
             const attractions = event._embedded?.attractions || [];
@@ -75,10 +77,11 @@ const fetchEventsTicketmaster = async (dmaId) => {
             item.addEventListener('click', function () {
                 const clickedArtist = this.querySelector('h2').textContent;
                 const eventImage = this.querySelector(".event_image").src;
+                const eventDate = this.querySelector(".eventDate")
                 sessionStorage.setItem("urlToFetch", showUrlToFetch);
                 sessionStorage.setItem("clickedArtist", clickedArtist);
                 sessionStorage.setItem("eventImage", eventImage);
-                console.log("eventImage: " + eventPictureOne);
+                sessionStorage.setItem("eventDate",)
             });
         });
 

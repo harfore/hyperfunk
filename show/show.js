@@ -2,8 +2,6 @@ const showEvent = async () => {
     const eventHeadline = sessionStorage.getItem("clickedArtist");
     const urlToFetch = sessionStorage.getItem("urlToFetch");
     const eventImage = sessionStorage.getItem("eventImage");
-    console.log("FRE: " + eventHeadline);
-    console.log("eventImage: " + eventImage);
 
     const showPresentation = document.getElementById('artistChoice');
 
