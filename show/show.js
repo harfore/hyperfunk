@@ -1,20 +1,49 @@
 const displayEvent = async () => {
-    const eventHeadline = sessionStorage.getItem("clickedArtist");
-    const eventImage = sessionStorage.getItem("eventImage");
-    const eventDate = sessionStorage.getItem("eventDate");
-    const eventVenue = sessionStorage.getItem("eventVenue");
+    try {
+        const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
+        const urlToFetch = sessionStorage.getItem("urlToFetch");
+        const res = await fetch(urlToFetch);
 
-    const showPresentation = document.getElementById('artistChoice');
+        if (!res.ok) {
+            throw new Error('Failed to fetch events');
+        }
+
+        const data = await res.json();
+
+        const eventIndex = sessionStorage.getItem("eventIndex");
+        const pathToEvent = data._embedded?.events[eventIndex];
+
+        const eventHeadline = sessionStorage.getItem("clickedArtist");
+        const eventDate = sessionStorage.getItem("eventDate");
+        const eventVenue = sessionStorage.getItem("eventVenue");
+
+        const eventImages = pathToEvent.images[1].url;
+        const bookingLink = pathToEvent.url;
+
+        const showPresentation = document.getElementById('eventChoice');
 
 
-    let showEventHtmlContent = '';
+        let showEventHtmlContent = '';
 
-    showEventHtmlContent += `<img class="eventImage" src="${eventImage}"/>`;
-    showEventHtmlContent += `<h2>${eventHeadline}</h2>`;
-    showEventHtmlContent += `<h3>${eventDate}</h3>`;
-    showEventHtmlContent += `<h3>${eventVenue}</h3>`;
-    showPresentation.innerHTML = showEventHtmlContent;
-}
+        showEventHtmlContent += `<img class="eventImage" src="${eventImages}"/>`;
+        showEventHtmlContent += `<h2>${eventHeadline}</h2>`;
+        showEventHtmlContent += `<h3>${eventDate}</h3>`;
+        showEventHtmlContent += `<h3>${eventVenue}</h3>`;
+
+        const bookingLinkButton = "<button class='button'>SHOW BOOKING LINK</button>";
+
+        showEventHtmlContent += `${bookingLinkButton}`
+        bookingLinkButton.addEventListener('click', function () {
+            showEventHtmlContent += `<p>${bookingLink}</p>`;
+        });
+        // FIX BOOKING LINK
+        showPresentation.innerHTML = showEventHtmlContent;
+
+    } catch (err) {
+        console.error(err);
+        showPresentation.innerHTML = `<p>${err}</p>`;
+    };
+};
 
 displayEvent();
 
