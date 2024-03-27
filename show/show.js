@@ -31,17 +31,17 @@ const displayEvent = async () => {
         showEventHtmlContent += `<h3>${eventVenue}</h3>`;
 
         const bookingLinkButton = "<button class='button'>SHOW BOOKING LINK</button>";
-
-        showEventHtmlContent += `${bookingLinkButton}`
-        bookingLinkButton.addEventListener('click', function () {
-            showEventHtmlContent += `<p>${bookingLink}</p>`;
-        });
-        // FIX BOOKING LINK
         showPresentation.innerHTML = showEventHtmlContent;
+
+        // showEventHtmlContent += `${bookingLinkButton}`
+        // bookingLinkButton.addEventListener('click', function () {
+        //     showEventHtmlContent += `<p>${bookingLink}</p>`;
+        // });
+        // // FIX BOOKING LINK
+        // showPresentation.innerHTML = showEventHtmlContent;
 
     } catch (err) {
         console.error(err);
-        showPresentation.innerHTML = `<p>${err}</p>`;
     };
 };
 

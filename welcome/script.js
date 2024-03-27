@@ -85,10 +85,10 @@ const fetchEventsTicketmaster = async (dmaId) => {
                 const eventIndex = this.querySelector(".eventIndex").textContent;
                 sessionStorage.setItem("urlToFetch", showUrlToFetch);
                 sessionStorage.setItem("clickedArtist", clickedArtist);
-                sessionStorage.setItem("eventImage", eventImage);
                 sessionStorage.setItem("eventDate", eventDate);
                 sessionStorage.setItem("eventVenue", eventVenue);
                 sessionStorage.setItem("urlToFetch", showUrlToFetch);
+                console.log(showUrlToFetch)
                 sessionStorage.setItem("eventIndex", eventIndex);
             });
         });
