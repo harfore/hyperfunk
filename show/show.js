@@ -21,9 +21,8 @@ const displayEvent = async () => {
         const subGenre = pathToEvent?.classifications[2]?.subGenre.name;
         // const presaleStartDate = pathToEvent?.sales?.presales[0]?.startDateTime;
         const generalSaleStartDate = pathToEvent?.sales?.public.startDateTime;
-        const minPrice = pathToEvent?.classifications[0].priceRanges[0].min;
-        const maxPrice = pathToEvent?.classifications[0].priceRanges[0].max;
-        const ticketLimit = pathToEvent?.accessibility?.ticketLimit;
+        // const minPrice = pathToEvent?.classifications[0].priceRanges[0].min;
+        // const maxPrice = pathToEvent?.classifications[0].priceRanges[0].max;
         const eventPromoter = pathToEvent.promoter.name;
 
         const showPresentation = document.getElementById('eventChoice');
@@ -68,9 +67,12 @@ const displayEvent = async () => {
         } else if (generalSaleStartDate === "undefined") {
             generalSaleStartDate = '';
         }
-        if (minPrice && maxPrice) {
-            showEventHtmlContent += `Prices range from ${minPrice}$ to ${maxPrice}$.`
-        }
+        // if (minPrice && maxPrice) {
+        //     showEventHtmlContent += `Prices range from ${minPrice}$ to ${maxPrice}$.`
+        // } else {
+        //     minPrice = '';
+        //     maxPrice = '';
+        // }
         if (eventPromoter) {
             showEventHtmlContent += `<p>Promoter: ${eventPromoter}</p>`
         } else if (eventPromoter === 'Undefined') {

@@ -40,7 +40,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
         let upcomingEventsCityHtml = '';
         upcomingEventsCityHtml += `<div class="eventCity"><h2>Upcoming events in ${eventsCity}, ${eventsCountry}</h2></div>`;
         upcomingEventsCityHtml += `<div class="event_container">`
-        events.slice(0, 15).forEach((event, index) => {
+        events.slice(0, 20).forEach((event, index) => {
             const eventName = event.name;
             const eventDate = event.dates?.start?.localDate;
             const eventImage = event.images[0].url;
@@ -56,7 +56,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
             upcomingEventsCityHtml += `</div>`;
             upcomingEventsCityHtml += `<div class="event_attractions">`;
             const attractions = event._embedded?.attractions || [];
-            attractions.slice(1, 15).forEach(attraction => {
+            attractions.slice(1, 20).forEach(attraction => {
                 upcomingEventsCityHtml += `<div class="event_attraction">`;
                 const artist = attraction.name;
                 const artistPictureOne = attraction.images?.[0].url;
