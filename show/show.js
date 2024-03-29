@@ -23,8 +23,8 @@ const displayEvent = async () => {
         const generalSaleStartDate = pathToEvent?.sales?.public.startDateTime;
         // const minPrice = pathToEvent?.classifications[0].priceRanges[0].min;
         // const maxPrice = pathToEvent?.classifications[0].priceRanges[0].max;
+        // const seatMap = pathToEvent.seatmap.staticUrl;
         const eventPromoter = pathToEvent.promoter.name;
-
         const showPresentation = document.getElementById('eventChoice');
 
 
@@ -64,15 +64,19 @@ const displayEvent = async () => {
         if (generalSaleStartDate) {
             let newGeneralSaleStartDate = generalSaleStartDate.replace(/T|Z/g, " ")
             showEventHtmlContent += `<p>Tickets sale starts on ${newGeneralSaleStartDate}</p>`;
-        } else if (generalSaleStartDate === "undefined") {
+        } else if (generalSaleStartDate === "Undefined") {
             generalSaleStartDate = '';
         }
+
         // if (minPrice && maxPrice) {
-        //     showEventHtmlContent += `Prices range from ${minPrice}$ to ${maxPrice}$.`
+        //     showEventHtmlContent += `Prices range from ${minPrice}$ to ${maxPrice}$.`;
         // } else {
         //     minPrice = '';
         //     maxPrice = '';
         // }
+
+
+
         if (eventPromoter) {
             showEventHtmlContent += `<p>Promoter: ${eventPromoter}</p>`
         } else if (eventPromoter === 'Undefined') {

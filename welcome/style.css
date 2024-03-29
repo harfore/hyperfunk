@@ -73,3 +73,8 @@
 #present {
     color: white;
 }
+
+.eventImage {
+    width: 10%;
+    height: auto;
+}
