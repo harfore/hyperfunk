@@ -1,4 +1,4 @@
-# Alive 2027
+# [Alive 2027](https://harfore.github.io/Alive2027/)
 A learning student project, Alive 2027 aims to present concerts and connect live music amateurs all over the globe. Users will soon be able to set up a profile, view the world's most popular tours and look through the nearest upcoming events.
 ![main page](./images/RDME1.png)
 
