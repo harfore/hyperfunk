@@ -2,6 +2,18 @@ const formValidation = () => {
     const form = document.getElementById("registration");
 
     const verifs = (email, username, handle, password) => {
+        const validateEmail = (email) => {
+            const emailError = document.getElementById('fillErrorEmail')
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { // testing
+                return true
+            } else {
+                emailError.innerHTML = `<p>Please type a valid email.</p>`
+            }
+        }
+        validateEmail(email)
+        const validateUsername = (username) = {
+
+        }
         const usernameError = document.getElementById("fillErrorUsername");
         const passwordError = document.getElementById("fillErrorPassword");
         const handleError = document.getElementById("fillErrorHandle");
@@ -19,7 +31,7 @@ const formValidation = () => {
     const email = form.email.value;
     const country = form.country.value;
     const username = form.username.value;
-    const handle = form.handle.value;
+    const handle = form.handle.value; // a handle is the same thing as a display name
     const pronouns = form.pronouns.value;
     const password = form.password.value;
     console.log("email: " + email);

@@ -22,6 +22,7 @@ past, upcoming are always there
 - onglet articles de journaux
 - page venues
 - make the site accessible to different devices
+- persona
 
 base de données concert
 
