@@ -1,14 +1,31 @@
 const formValidation = () => {
-    const email = document.registration.email.value;
-    const country = document.registration.country.value;
-    const username = document.registration.username.value;
-    const displayName = document.registration.displayName.value;
-    const pronouns = document.registration.pronouns.value;
-    const password = document.registration.password.value;
+    const form = document.getElementById("registration");
+
+    const verifs = (email, username, handle, password) => {
+        const usernameError = document.getElementById("fillErrorUsername");
+        const passwordError = document.getElementById("fillErrorPassword");
+        const handleError = document.getElementById("fillErrorHandle");
+        if (username.length < 3) {
+            usernameError.innerHTML = "<p>Usernames cannot be less than 3 characters long.</p>"
+        }
+        if (handle.length < 3) {
+            handleError.innerHTML = "<p>Handles cannot be less than 3 characters long.</p>"
+        }
+        if (password.length < 5) {
+            passwordError.innerHTML = "<p>Passwords cannot be less than 2 characters long.</p>"
+        }
+    }
+
+    const email = form.email.value;
+    const country = form.country.value;
+    const username = form.username.value;
+    const handle = form.handle.value;
+    const pronouns = form.pronouns.value;
+    const password = form.password.value;
     console.log("email: " + email);
     console.log("country: " + country);
     console.log("username: " + username);
-    console.log("display name: " + displayName);
+    console.log("display name: " + handle);
     console.log('pronouns: ' + pronouns);
     console.log('password: ' + password);
 
@@ -24,16 +41,10 @@ const formValidation = () => {
     //     }
     // });
 
-    const verifs = () => {
-        if (username.length < 2 || password.length < 5) {
-            alert("Usernames cannot be shorter than 2 characters.");
-        }
-    }
-
-    verifs()
+    return verifs(email, username, handle, password)
 }
 
-document.registration.addEventListener("createAccount", function (event) {
+document.registration.addEventListener("submit", function (event) {
     event.preventDefault();
     formValidation();
-})
+});

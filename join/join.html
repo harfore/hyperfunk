@@ -30,14 +30,15 @@
             <img class="sideJoinImage" src="../images/bereal.PNG" alt="">
         </div>
         <section class="center">
-            <form name="registration">
-                <h2 class="centerElement">WELCOME</h2>
-                <div class="centerElement">
+            <form id="registration" name="registration">
+                <h2>WELCOME</h2>
+                <div>
                     <label for="email">EMAIL</label><br>
                     <input class="formInputArea" type="text" placeholder="sun@gmail.com" id="email"><br>
+                    <div class="fillError" id="fillErrorEmail"></div>
                 </div>
 
-                <div class="centerElement">
+                <div>
                     <ul class="list">
                         <li><label for="country">COUNTRY</label></li>
                         <li><select class="formInputArea" id="country" name="country">
@@ -113,17 +114,19 @@
                     </ul>
                 </div>
 
-                <div class="centerElement">
+                <div>
                     <label for="username">USERNAME</label><br>
                     <input class="formInputArea" type="text" id="username"><br><br>
+                    <div class="fillError" id="fillErrorUsername"></div>
                 </div>
 
-                <div class="centerElement">
-                    <label for="displayName">DISPLAY NAME</label><br>
-                    <input class="formInputArea" type="text" name="displayName" id="displayName"><br><br>
+                <div>
+                    <label for="handle">HANDLE</label><br>
+                    <input class="formInputArea" type="text" name="handle" id="handle"><br><br>
+                    <div class="fillError" id="fillErrorHandle"></div>
                 </div>
 
-                <div class="centerElement">
+                <div>
                     <ul class="list">
                         <li><label for="pronouns">PRONOUNS</label><br></li>
                         <li><select class="formInputArea" id="pronouns">
@@ -144,12 +147,13 @@
                     <br>
                 </div>
 
-                <div class="centerElement">
+                <div>
                     <label for="password">PASSWORD</label><br>
                     <input class="formInputArea" type="password" id="password"><br>
+                    <div class="fillError" id="fillErrorPassword"></div>
                 </div>
 
-                <div class="centerElement">
+                <div>
                     <button type="submit" type="button" id="createAccount">CREATE ACCOUNT</button>
                 </div>
 

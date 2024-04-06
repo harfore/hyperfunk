@@ -1,6 +1,6 @@
 body {
     background: linear-gradient(to bottom, #012161, black);
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Courier New', Courier, monospace;
     color: white;
     text-align: center;
     padding-top: 6%;
@@ -15,15 +15,6 @@ a {
 
 img {
     max-width: 100%;
-}
-
-
-
-@font-face {
-    font-family: 'Roboto Mono';
-    src: url('/Roboto_Mono/RobotoMono-VariableFont_wght.ttf') format('woff2');
-    font-weight: 300;
-    font-style: normal;
 }
 
 .title {
