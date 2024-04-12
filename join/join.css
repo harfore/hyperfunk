@@ -3,7 +3,7 @@
 }
 
 .side {
-    width: 35%;
+    width: 30%;
     border: solid 1px white;
     top: 0;
 }
@@ -15,7 +15,7 @@
 }
 
 .center {
-    width: 30%;
+    width: 40%;
     margin: auto;
 }
 

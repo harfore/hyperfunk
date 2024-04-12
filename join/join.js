@@ -1,45 +1,49 @@
 const formValidation = () => {
     const form = document.getElementById("registration");
+    const usernameError = document.getElementById("fillErrorUsername");
+    const passwordError = document.getElementById("fillErrorPassword");
+    const handleError = document.getElementById("fillErrorHandle");
 
     const verifs = (email, username, handle, password) => {
         const validateEmail = (email) => {
             const emailError = document.getElementById('fillErrorEmail')
-            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { // testing
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { // testing to see if the  email format is valid
                 return true
             } else {
-                emailError.innerHTML = `<p>Please type a valid email.</p>`
+                emailError.innerHTML = `<p>Please type a valid email.</p>`;
             }
         }
         validateEmail(email)
-        const validateUsername = (username) = {
+        const validateUsername = (username, us_min, us_max) => {
+            const us_len = username.length
+            if (us_len === 0 || us_len < us_min || us_len > us_max) {
+                usernameError.innerHTML = `Usernames must be between 3 and 22 characters long`;
+            }
+        }
+        validateUsername(username, 3, 22)
+        const validateHandle = (handle, ha_min, ha_max) => {
+            const ha_len = handle.length
+            if (ha_len === 0 || ha_len < ha_min || ha_len > ha_max) {
+                handleError.innerHTML = `Handles must be between 1 and 35 characters long`;
+            }
+        }
+        validateHandle(handle, 1, 35)
+        const validatePassword = (password, ps_min, ps_max) => {
+            const ps_len = password.length
+            if (ps_len === 0 || ps_len < ps_min || ps_len > ps_max) {
+                passwordError.innerHTML = `Passwords must be between 5 and 20 characters long`;
+            }
+        }
+        validatePassword(password, 5, 20)
 
-        }
-        const usernameError = document.getElementById("fillErrorUsername");
-        const passwordError = document.getElementById("fillErrorPassword");
-        const handleError = document.getElementById("fillErrorHandle");
-        if (username.length < 3) {
-            usernameError.innerHTML = "<p>Usernames cannot be less than 3 characters long.</p>"
-        }
-        if (handle.length < 3) {
-            handleError.innerHTML = "<p>Handles cannot be less than 3 characters long.</p>"
-        }
-        if (password.length < 5) {
-            passwordError.innerHTML = "<p>Passwords cannot be less than 2 characters long.</p>"
-        }
     }
 
     const email = form.email.value;
     const country = form.country.value;
     const username = form.username.value;
-    const handle = form.handle.value; // a handle is the same thing as a display name
+    const handle = form.handle.value; // handles = display names
     const pronouns = form.pronouns.value;
     const password = form.password.value;
-    console.log("email: " + email);
-    console.log("country: " + country);
-    console.log("username: " + username);
-    console.log("display name: " + handle);
-    console.log('pronouns: ' + pronouns);
-    console.log('password: ' + password);
 
     // document.getElementById("pathToCustomPronouns").addEventListener("click", function () {
     //     const customPronounsInput = document.getElementById("customPronouns");
@@ -56,7 +60,7 @@ const formValidation = () => {
     return verifs(email, username, handle, password)
 }
 
-document.registration.addEventListener("submit", function (event) {
-    event.preventDefault();
+document.registration.addEventListener("submit", function () {
     formValidation();
 });
+// 10:15
