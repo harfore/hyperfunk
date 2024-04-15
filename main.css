@@ -43,7 +43,7 @@ img {
 }
 
 .banner .element:hover {
-    color: lightgray;
+    color: rgb(180, 179, 179);
 }
 
 .rotate {
