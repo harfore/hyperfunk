@@ -45,12 +45,18 @@ const fetchEventsTicketmaster = async (dmaId) => {
             const eventDate = event.dates?.start?.localDate;
             const eventImage = event.images[0].url;
             const eventVenue = event._embedded.venues[0].name || '';
+            let eventGenre = event.classifications[0].genre.name || '';
+            if (eventGenre === 'Undefined') {
+                eventGenre = '';
+            }
             upcomingEventsCityHtml += `<div class="event_item">`;
             upcomingEventsCityHtml += `<a href="/show/show.html">`;
             upcomingEventsCityHtml += `<div class="eventPresentation">`;
             upcomingEventsCityHtml += `<h3 class="eventIndex">${index}</h3>`;
             upcomingEventsCityHtml += `<h2>${eventName}</h2>`;
             upcomingEventsCityHtml += `<img class="eventImage" src="${eventImage}"/>`;
+
+            upcomingEventsCityHtml += `<h3>${eventGenre}</h3>`
             upcomingEventsCityHtml += `<h4 class="eventDate">${eventDate}</h4>`;
             upcomingEventsCityHtml += `<h3 class="eventVenue">${eventVenue}</h3>`;
             upcomingEventsCityHtml += `</div>`;
@@ -61,12 +67,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
                 const artist = attraction.name;
                 const artistPictureOne = attraction.images?.[0].url;
                 upcomingEventsCityHtml += `<h2>${artist}</h2>`;
-                let musicGenre = event._embedded.attractions[0].classifications[0].genre.name || '';
-                if (musicGenre === 'Undefined') {
-                    musicGenre = ' ';
-                };
                 upcomingEventsCityHtml += `<img class="artist_image" src="${artistPictureOne}"><br>`;
-                upcomingEventsCityHtml += `<p class='musicGenre'>${musicGenre}<br>`;
                 upcomingEventsCityHtml += `</a>`;
                 upcomingEventsCityHtml += `</div>`;
             });

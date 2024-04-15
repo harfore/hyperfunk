@@ -42,6 +42,10 @@ img {
     text-decoration: none;
 }
 
+.banner .element:hover {
+    color: lightgray;
+}
+
 .rotate {
     transform: rotate(90deg);
     margin-bottom: 5em;
