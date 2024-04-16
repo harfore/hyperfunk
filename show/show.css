@@ -1,0 +1,13 @@
+.social-container {
+    text-align: center;
+    display: flex;
+}
+
+.social-media {
+    padding: 2em;
+}
+
+.eventImage {
+    width: 40rem;
+    height: auto;
+}

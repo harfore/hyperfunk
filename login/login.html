@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../main.css" rel="stylesheet">
+    <link href="./join.css" rel="stylesheet">
+    <script defer src="login.js"></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <header class="banner">
+        <a class="element" href="./index.html">
+            <h2>Hyperfunk</h2>
+        </a>
+        <a class="element" href="../remi_profile/remi_profile.html">
+            <h2>remi</h2>
+        </a>
+        <a class="element" href="../login/login.html">
+            <h2>Login</h2>
+        </a>
+        <a class="element" href="../join/join.html">
+            <h2>Join</h2>
+        </a>
+        <a class="element" href="../profilez/profilez.html">
+            <h2>Profiles</h2>
+        </a>
+        <label for="searchEngine"> </label>
+        <textarea placeholder="search"></textarea>
+    </header>
+    <div class="container">
+        <form action="" class="form" id="login">
+            <h1 class="form__title">Login</h1>
+            <div class="form__message form__message__error">Incorrect username/password combination.</div>
+            <div class="form__input-group">
+                <input type="text" class="form_input" autofocus placeholder="Username or email">
+                <div class="form__input-error-message">This is an error message.</div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form_input" autofocus placeholder="Password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <button class="form__button" type="submit">Continue</button>
+            <p class="form__text">
+                <a href="#" class="form__link">Forgot your password?</a>
+            </p>
+            <p class="form__text">
+                <a title='link to create account' class="form__link" href="../join/join.html" id="createAccountLink">
+                    <p>Don't have an account? Create one</p>
+                </a>
+            </p>
+        </form>
+    </div>
+    <script src="join.js"></script>
+</body>
+
+</html>
