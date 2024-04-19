@@ -37,13 +37,15 @@ img {
 }
 
 .banner .element {
-    padding: 5%;
+    padding: 3% 5%;
     color: rgb(199, 197, 197);
     text-decoration: none;
 }
 
 .banner .element:hover {
+    background-color: none;
     color: white;
+    transition: background-color 1s, color 1s;
 }
 
 .rotate {
