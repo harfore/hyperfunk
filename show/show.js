@@ -10,7 +10,7 @@ const displayEvent = async () => {
 
         const data = await res.json();
 
-        const eventIndex = sessionStorage.getItem("eventIndex");
+        const eventIndex = sessionStorage.getItem("eventIndex"); // getting the right event from upcomingEvents page
         const pathToEvent = data._embedded?.events[eventIndex];
         const eventImages = pathToEvent?.images[1]?.url;
         const eventHeadline = sessionStorage.getItem("clickedArtist");

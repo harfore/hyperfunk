@@ -24,7 +24,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
         const data = await res.json();
 
         let townToPresent = '';
-        if (dmaId === 324) {
+        if (dmaId === 324) { // dmaId determines from which town the data is going to be displayed
             townToPresent = presentLosAngeles;
         };
 
@@ -84,6 +84,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
                 const eventDate = this.querySelector(".eventDate").textContent;
                 const eventVenue = this.querySelector(".eventVenue").textContent;
                 const eventIndex = this.querySelector(".eventIndex").textContent;
+                // sending the data of the clicked event to "show" page
                 sessionStorage.setItem("urlToFetch", showUrlToFetch);
                 sessionStorage.setItem("clickedArtist", clickedArtist);
                 sessionStorage.setItem("eventDate", eventDate);
@@ -98,7 +99,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
             if (window.matchMedia("(max-width: 768px)").matches) {
                 townToPresent.innerHTML = upcomingEventsCityHtml;
             };
-        };
+        }; // displaying a different amount of events per row depending on screen size
 
         window.addEventListener('resize', displayEventsOnResize);
 

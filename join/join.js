@@ -7,7 +7,7 @@ const formValidation = () => {
     const verifs = (email, username, handle, password) => {
         const validateEmail = (email) => {
             const emailError = document.getElementById('fillErrorEmail')
-            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { // testing to see if the  email format is valid
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { // testing to see if the email format is valid
                 return true
             } else {
                 emailError.innerHTML = `<p>Please type a valid email.</p>`;
