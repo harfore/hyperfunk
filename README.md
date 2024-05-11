@@ -1,4 +1,4 @@
-# [Hyperfunk](https://harfore.github.io/Alive2027/)
+# [Hyperfunk](https://harfore.github.io/hyperfunk/)
 A learning student project, vibrant platform Hyperfunk aims to present concerts and connect live music amateurs all over the globe. Users will soon be able to set up a profile, view the world's most popular tours and look through the nearest upcoming events.
 ![hyperfunk main image](./images/Readme/RDME1_MAIN.png)
 
