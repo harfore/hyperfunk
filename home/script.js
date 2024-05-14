@@ -50,7 +50,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
                 eventGenre = '';
             }
             upcomingEventsCityHtml += `<div class="event_item">`;
-            upcomingEventsCityHtml += `<a href="/show/show.html">`;
+            upcomingEventsCityHtml += `<a href="../show/show.html">`;
             upcomingEventsCityHtml += `<div class="eventPresentation">`;
             upcomingEventsCityHtml += `<h3 style="display: none;" class="eventIndex">${index}</h3>`;
             upcomingEventsCityHtml += `<h2>${eventName}</h2>`;
@@ -90,7 +90,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
                 sessionStorage.setItem("eventDate", eventDate);
                 sessionStorage.setItem("eventVenue", eventVenue);
                 sessionStorage.setItem("urlToFetch", showUrlToFetch);
-                console.log(showUrlToFetch)
+                console.log(showUrlToFetch);
                 sessionStorage.setItem("eventIndex", eventIndex);
             });
         });
