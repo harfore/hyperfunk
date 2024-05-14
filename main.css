@@ -13,6 +13,14 @@ a {
     text-decoration: none;
 }
 
+.artist_search {
+    width: 10rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    margin: 1rem;
+    margin-left: 5rem;
+}
+
 img {
     max-width: 100%;
 }

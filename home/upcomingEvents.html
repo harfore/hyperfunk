@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="/welcome/script.js" type="module"></script>
+    <script defer src="./script.js" type="module"></script>
     <!-- <script defer src="/welcome/script.test.js" type="module"></script>
     <script>
         const { JSDOM } = window.jsdom;
@@ -14,7 +14,7 @@
         global.fetch = require('node-fetch');
     </script> -->
     <link href="../main.css" rel='stylesheet'>
-    <link rel="stylesheet" href="upcomingEvents.css">
+    <link rel="stylesheet" href="./upcomingEvents.css">
     <title>Upcoming events</title>
 </head>
 
@@ -35,8 +35,7 @@
         <a class="element" href="../profilez/profilez.html">
             <h2>Profiles</h2>
         </a>
-        <label for="searchEngine"> </label>
-        <textarea placeholder="search"></textarea>
+        <input name="artist_search" class="artist_search" placeholder="..."></input>
     </header>
 
     <div id="main">
