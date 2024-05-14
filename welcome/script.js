@@ -108,6 +108,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
         console.error(err);
         presentLosAngeles.innerHTML = `<p>${err}</p>`;
     };
+    console.log("Displaying events in 3, 2, 1..")
 };
 
 fetchEventsTicketmaster(324);
