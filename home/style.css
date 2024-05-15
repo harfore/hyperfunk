@@ -21,6 +21,8 @@
     border-radius: 15px;
     background-image: linear-gradient(to bottom, transparent 0%, black 100%);
     z-index: -1;
+    width: 20rem;
+    height: 14rem;
 }
 
 .city:hover {
@@ -74,7 +76,7 @@
     color: white;
 }
 
-.eventImage {
-    width: 10%;
+.eventImage .artistImage {
+    width: 12rem;
     height: auto;
 }

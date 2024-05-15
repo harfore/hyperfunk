@@ -1,16 +1,22 @@
-const fetchEventsTicketmaster = async (dmaId) => {
-    const activateLosAngeles = document.getElementById('activateLosAngeles');
-    const activateRioDeJaneiro = document.getElementById('activateRioDeJaneiro');
-    const activateParisFrance = document.getElementById('activateParisFrance');
-    const activateSingapore = document.getElementById('activateSingapore');
-    const activateTokyoJapan = document.getElementById('activateTokyoJapan');
-    const activateAmsterdam = document.getElementById('activateAmsterdam');
-    const presentLosAngeles = document.getElementById('presentLosAngeles');
-    const presentRioDeJaneiro = document.getElementById('presentRioDeJaneiro');
-    const presentParisFrance = document.getElementById('presentParisFrance');
-    const presentSingapore = document.getElementById('presentSingapore');
-    const presentTokyoJapan = document.getElementById('presentTokyoJapan');
-    const presentAmsterdam = document.getElementById('presentAmsterdam');
+const fetchEventsTicketmaster = async () => {
+    let dmaId = 324
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const activateLosAngeles = document.getElementById('activateLosAngeles');
+        const activateNewYork = document.getElementById('activateNewYork');
+        const activateToronto = document.getElementById('activateToronto');
+        const activateNewOrleans = document.getElementById('activateNewOrleans');
+        const activateHouston = document.getElementById('activateHouston');
+        const activateLondon = document.getElementById('activateLondon');
+
+        activateLosAngeles.addEventListener('click', () => dmaId = 324);
+        activateNewYork.addEventListener('click', () => dmaId = 345);
+        activateToronto.addEventListener('click', () => dmaId = 327);
+        activateNewOrleans.addEventListener('click', () => dmaId = 344);
+        activateHouston.addEventListener('click', () => dmaId = 300);
+        activateLondon.addEventListener('click', () => dmaId = 602);
+    });
+
 
     try {
         const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
@@ -23,10 +29,29 @@ const fetchEventsTicketmaster = async (dmaId) => {
 
         const data = await res.json();
 
+        const presentLosAngeles = document.getElementById('presentLosAngeles');
+        const presentNewYork = document.getElementById('presentNewYork');
+        const presentToronto = document.getElementById('presentToronto');
+        const presentNewOrleans = document.getElementById('presentNewOrleans');
+        const presentHouston = document.getElementById('presentHouston');
+        const presentLondon = document.getElementById('presentLondon');
+
         let townToPresent = '';
         if (dmaId === 324) { // dmaId determines from which town the data is going to be displayed
             townToPresent = presentLosAngeles;
-        };
+        } else if (dmaId === 345) {
+            townToPresent = presentNewYork;
+        } else if (dmaId === 527) {
+            townToPresent = presentToronto;
+        } else if (dmaId === 344) {
+            townToPresent = presentNewOrleans;
+        } else if (dmaId === 300) {
+            townToPresent = presentHouston;
+        } else if (dmaId === 602) {
+            townToPresent = presentLondon;
+        } else {
+            dmaId = 324;
+        }
 
         const events = data._embedded?.events || [];
 
@@ -67,7 +92,7 @@ const fetchEventsTicketmaster = async (dmaId) => {
                 const artist = attraction.name;
                 const artistPictureOne = attraction.images?.[0].url;
                 upcomingEventsCityHtml += `<h2>${artist}</h2>`;
-                upcomingEventsCityHtml += `<img class="artist_image" src="${artistPictureOne}"><br>`;
+                upcomingEventsCityHtml += `<img class="artistImage" src="${artistPictureOne}"><br>`;
                 upcomingEventsCityHtml += `</a>`;
                 upcomingEventsCityHtml += `</div>`;
             });
@@ -106,12 +131,18 @@ const fetchEventsTicketmaster = async (dmaId) => {
 
     } catch (err) {
         console.error(err);
-        presentLosAngeles.innerHTML = `<p>${err}</p>`;
     };
-    console.log("Displaying events in 3, 2, 1..")
+    console.log("Displaying events in 3, 2, 1..");
 };
 
-fetchEventsTicketmaster(324);
+fetchEventsTicketmaster(345);
+
+// activateLosAngeles.addEventListener('click', () => fetchEventsTicketmaster(324));
+// activateNewYork.addEventListener('click', () => fetchEventsTicketmaster(345));
+// activateToronto.addEventListener('click', () => fetchEventsTicketmaster(527));
+// activateNewOrleans.addEventListener('click', () => fetchEventsTicketmaster(344));
+// activateHouston.addEventListener('click', () => fetchEventsTicketmaster(300));
+// activateLondon.addEventListener('click', () => fetchEventsTicketmaster(602));
 
 // boutons villes
 // a - text decoration: none
