@@ -32,9 +32,8 @@ a {
 }
 
 .event_item {
-    /* border: 1px solid rgb(187, 187, 223); */
-    border-radius: 20%;
-    margin: auto;
+    border: 1px solid rgb(187, 187, 223);
+    margin-top: 2rem;
 }
 
 .event_item_title:hover {
@@ -45,6 +44,10 @@ a {
 .event_presentation {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
+}
+
+.event_name:hover {
+    color: rgb(199, 197, 197);
 }
 
 .event_image {

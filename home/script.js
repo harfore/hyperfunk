@@ -44,6 +44,7 @@ window.onload = (event) => {
     determineCity();
 };
 
+// REPLACE CSS ON MAIN
 // villes console.log cities.js
 // hide overflow
 // carousel tournées les plus populaires au dessus des villes
