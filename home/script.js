@@ -2,7 +2,6 @@ const determineCity = () => {
     // Check if the user is not on the upcomingEvents page
     if (!window.location.pathname.includes("upcomingEvents")) {
         const activateLosAngeles = document.getElementById('activateLosAngeles');
-        console.log("activateLosAngeles:", activateLosAngeles);
         const activateNewYork = document.getElementById('activateNewYork');
         const activateToronto = document.getElementById('activateToronto');
         const activateNewOrleans = document.getElementById('activateNewOrleans');
@@ -40,7 +39,7 @@ const determineCity = () => {
 };
 
 window.onload = (event) => {
-    console.log("La page est complètement chargée");
+    console.log('Page has loaded.')
     determineCity();
 };
 

@@ -11,14 +11,6 @@ const fetchEventsTicketmaster = async () => {
 
         const data = await res.json();
 
-
-        const presentLosAngeles = document.getElementById('presentLosAngeles');
-        const presentNewYork = document.getElementById('presentNewYork');
-        const presentToronto = document.getElementById('presentToronto');
-        const presentNewOrleans = document.getElementById('presentNewOrleans');
-        const presentHouston = document.getElementById('presentHouston');
-        const presentLondon = document.getElementById('presentLondon');
-
         const events = data._embedded?.events || [];
 
         const eventsCity = data._embedded.events[0]._embedded.venues[0].city.name;
@@ -30,7 +22,7 @@ const fetchEventsTicketmaster = async () => {
         const townMap = {
             324: 'presentLosAngeles',
             345: 'presentNewYork',
-            527: 'presentToronto',
+            299: 'presentToronto',
             344: 'presentNewOrleans',
             300: 'presentHouston',
             602: 'presentLondon'
