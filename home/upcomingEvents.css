@@ -6,17 +6,17 @@ a {
     display: flex;
 }
 
-.left {
+#main .left {
     width: 15%;
     background-color: rgb(24, 24, 24);
 }
 
-.center {
+#main .center {
     width: 70%;
     margin: auto;
 }
 
-.right {
+#main .right {
     width: 15%;
     background-color: rgb(24, 24, 24);
 }
@@ -34,6 +34,7 @@ a {
 .event_item {
     border: 1px solid rgb(187, 187, 223);
     margin-top: 2rem;
+    overflow: hidden;
 }
 
 .event_item_title:hover {

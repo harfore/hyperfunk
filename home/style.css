@@ -4,8 +4,24 @@
     border-radius: 10%;
 }
 
+.main .left {
+    width: 0%;
+    background-color: rgb(24, 24, 24);
+}
+
+.main .center {
+    width: 100%;
+    margin: auto;
+}
+
+.main .right {
+    width: 0%;
+    background-color: rgb(24, 24, 24);
+}
+
+
 .cities_list {
-    margin: 3em auto;
+    margin: auto 10%;
     width: 70%;
     display: flex;
 }
@@ -18,10 +34,10 @@
 }
 
 .city_picture {
-    border-radius: 15px;
+    border-radius: 1rem;
     background-image: linear-gradient(to bottom, transparent 0%, black 100%);
     z-index: -1;
-    width: 20rem;
+    width: 100%;
     height: 14rem;
 }
 
@@ -29,25 +45,8 @@
     margin-top: 50px;
 }
 
-#name {
-    font-size: 25px;
-}
-
-.joinbutton {
-    margin: auto;
-    width: 7em;
-    height: 70px;
-    font-size: 20px;
-    background-color: white;
-    border-radius: 10px;
-}
-
-#buttondiv {
-    text-align: center;
-}
-
 .presentButton {
-    width: 20rem;
+    width: 18rem;
     height: 2.5rem;
     padding: 2%;
     font-size: 1rem;
