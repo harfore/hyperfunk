@@ -24,7 +24,7 @@ const displayEvent = async () => {
         // const minPrice = pathToEvent?.classifications[0].priceRanges[0].min;
         // const maxPrice = pathToEvent?.classifications[0].priceRanges[0].max;
         // const seatMap = pathToEvent.seatmap.staticUrl;
-        const eventPromoter = pathToEvent.promoter.name;
+        // const eventPromoter = pathToEvent.promoter.name;
         const showPresentation = document.getElementById('eventChoice');
 
 
@@ -75,11 +75,11 @@ const displayEvent = async () => {
         //     maxPrice = '';
         // };
 
-        if (eventPromoter) {
-            showEventHtmlContent += `<p>Promoter: ${eventPromoter}</p>`
-        } else if (eventPromoter === 'Undefined') {
-            eventPromoter = '';
-        };
+        // if (eventPromoter) {
+        //     showEventHtmlContent += `<p>Promoter: ${eventPromoter}</p>`
+        // } else if (eventPromoter === 'Undefined') {
+        //     eventPromoter = '';
+        // };
 
         const bookingLinkButton = document.createElement('button');
         bookingLinkButton.className = 'button';
