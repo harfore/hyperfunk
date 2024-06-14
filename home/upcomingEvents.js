@@ -53,20 +53,18 @@ const fetchEventsTicketmaster = async () => {
             upcomingEventsCityHtml += `</a>`;
             upcomingEventsCityHtml += `<img class="event_image" src="${eventImage}"/>`;
 
-            upcomingEventsCityHtml += `<h3>${eventGenre}</h3>`;
-            upcomingEventsCityHtml += `<h4 class="eventDate">${eventDate}</h4>`;
-            upcomingEventsCityHtml += `<h3 class="eventVenue">${eventVenue}</h3>`;
+            // upcomingEventsCityHtml += `<h4 class="eventDate">${eventDate}</h4>`;
             upcomingEventsCityHtml += `</div>`;
             upcomingEventsCityHtml += `<div class="event_attractions">`;
-            const attractions = event._embedded?.attractions || [];
-            attractions.slice(1, 40).forEach(attraction => {
-                upcomingEventsCityHtml += `<div class="event_attraction">`;
-                const artist = attraction.name;
-                const artistPictureOne = attraction.images?.[0].url;
-                upcomingEventsCityHtml += `<h2>${artist}</h2>`;
-                upcomingEventsCityHtml += `<img class="artist_image" src="${artistPictureOne}"><br>`;
-                upcomingEventsCityHtml += `</div>`;
-            });
+            // const attractions = event._embedded?.attractions || [];
+            // attractions.slice(1, 40).forEach(attraction => {
+            //     upcomingEventsCityHtml += `<div class="event_attraction">`;
+            //     const artist = attraction.name;
+            //     const artistPictureOne = attraction.images?.[0].url;
+            //     upcomingEventsCityHtml += `<h2>${artist}</h2>`;
+            //     upcomingEventsCityHtml += `<img class="artist_image" src="${artistPictureOne}"><br>`;
+            //     upcomingEventsCityHtml += `</div>`;
+            // });
             upcomingEventsCityHtml += `</div>`;
             upcomingEventsCityHtml += `</div>`;
         });

@@ -14,6 +14,7 @@ const determineCity = () => {
             dmaId = 324;
             sessionStorage.setItem("dmaId", dmaId);
         });
+
         activateNewYork.addEventListener('click', () => {
             dmaId = 345;
             sessionStorage.setItem("dmaId", dmaId);
@@ -23,14 +24,17 @@ const determineCity = () => {
             dmaId = 327;
             sessionStorage.setItem("dmaId", dmaId);
         });
+
         activateNewOrleans.addEventListener('click', () => {
             dmaId = 344;
             sessionStorage.setItem("dmaId", dmaId);
         });
+
         activateHouston.addEventListener('click', () => {
             dmaId = 300;
             sessionStorage.setItem("dmaId", dmaId);
         });
+
         activateLondon.addEventListener('click', () => {
             dmaId = 602;
             sessionStorage.setItem("dmaId", dmaId);
@@ -60,7 +64,6 @@ window.onload = (event) => {
     <img src="/socials/instagram.png" alt="spotify link" class='social-media' width="60" height="auto">
     </a></p></div>`;
 } */
-// htmlContent += `<p class='bookingLink' >Booking link: <u>${attraction.url}</u></p>`;
 // htmlContent += `<p><a href="${attraction.externalLinks.homepage || '#'}">Artist Homepage</a></p>`;
 // pricesRange;
 // - villes

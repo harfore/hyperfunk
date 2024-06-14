@@ -27,14 +27,36 @@ a {
 }
 
 .event_container {
+    display: flex;
     flex-wrap: wrap;
-    padding: 2em 3em;
+    margin: 0 2rem;
 }
 
 .event_item {
     border: 1px solid rgb(187, 187, 223);
-    margin-top: 2rem;
+    border-radius: 1rem;
     overflow: hidden;
+    width: 25rem;
+    flex: 1 1 calc(25% - 16px);
+    margin: 4%;
+}
+
+@media (max-width: 1024px) {
+    .event_item {
+        flex: 1 1 calc(33.33% - 16px);
+    }
+}
+
+@media (max-width: 768px) {
+    .event_item {
+        flex: 1 1 calc(50% - 16px);
+    }
+}
+
+@media (max-width: 480px) {
+    .event_item {
+        flex: 1 1 100%;
+    }
 }
 
 .event_item_title:hover {
@@ -52,7 +74,7 @@ a {
 }
 
 .event_image {
-    width: 35%;
+    width: 40rem;
     height: auto;
 }
 
