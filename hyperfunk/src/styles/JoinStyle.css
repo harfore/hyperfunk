@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+}
+
+.side {
+    width: 30%;
+    border: solid 1px white;
+    top: 0;
+}
+
+.sideJoinImage {
+    width: 50%;
+    height: auto;
+    border: solid 1px white;
+}
+
+.center {
+    width: 40%;
+    margin: auto;
+}
+
+.formInputArea {
+    width: 15em;
+    height: 3em;
+    border-radius: 20%;
+    background-color: rgb(24, 24, 24);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 80%;
+    margin: 0.5em;
+}
+
+ul>li {
+    list-style-type: none;
+}
+
+#createAccount {
+    width: 8em;
+    font-size: 110%;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 5%;
+    background-color: #0a368d;
+    border-color: #0a368d;
+    margin-bottom: 2em;
+    border-radius: 10%;
+}

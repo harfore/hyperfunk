@@ -1,0 +1,26 @@
+.banner {
+    background-color: rgb(24, 24, 24);
+    color: white;
+    height: 8%;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.banner .element {
+    padding: 1% 5%;
+    color: rgb(199, 197, 197);
+    text-decoration: none;
+}
+
+.banner .element:hover {
+    background-color: none;
+    color: white;
+    transition: background-color 1s, color 1s;
+}
