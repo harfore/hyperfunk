@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../main.css" rel="stylesheet">
-    <script defer src="./login.js"></script>
+    <script defer type="module" src="./login.js"></script>
     <title>Login</title>
 </head>
 
@@ -30,21 +30,11 @@
     </header>
 
     <div class="container">
-        <form action="" class="form" id="login">
-            <h1 class="form__title">Welcome back!</h1>
-            <div class="form__message form__message__error">Incorrect username/password combination.</div>
-            <div class="form__input-group">
-                <input type="text" class="form_input" autofocus placeholder="Username or email">
-                <div class="form__input-error-message">This is an error message.</div>
-            </div>
-            <div class="form__input-group">
-                <input type="password" class="form_input" autofocus placeholder="Password">
-                <div class="form__input-error-message"></div>
-            </div>
-            <button class="form__button" type="submit">Continue</button>
-            <p class="form__text">
-                <a href="#" class="form__link">Forgot your password?</a>
-            </p>
+        <form id="login">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <div id="loginError"></div>
             <p class="form__text">
                 <a title='link to create account' class="form__link" href="../join/join.html" id="createAccountLink">
                     <p>Don't have an account? Create one</p>
@@ -52,7 +42,6 @@
             </p>
         </form>
     </div>
-    <script src="join.js"></script>
 </body>
 
 </html>

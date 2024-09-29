@@ -112,6 +112,7 @@ document.getElementById("registration").addEventListener("submit", async functio
 
             // Save additional user info in Firestore
             await setDoc(doc(db, "users", user.uid), {
+                email,
                 country,
                 username,
                 handle,
