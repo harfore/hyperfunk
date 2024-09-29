@@ -7,17 +7,17 @@ a {
 }
 
 #main .left {
-    width: 15%;
+    width: 12.5%;
     background-color: rgb(24, 24, 24);
 }
 
 #main .center {
-    width: 70%;
+    width: 75%;
     margin: auto;
 }
 
 #main .right {
-    width: 15%;
+    width: 12.5%;
     background-color: rgb(24, 24, 24);
 }
 
