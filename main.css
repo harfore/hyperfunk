@@ -11,6 +11,7 @@ body {
 
 a {
     text-decoration: none;
+    color: white;
 }
 
 .artist_search {
@@ -32,7 +33,7 @@ img {
 .banner {
     background-color: rgb(24, 24, 24);
     color: white;
-    height: 10%;
+    height: 8%;
     text-align: center;
     position: fixed;
     top: 0;
@@ -45,7 +46,7 @@ img {
 }
 
 .banner .element {
-    padding: 3% 5%;
+    padding: 1% 5%;
     color: rgb(199, 197, 197);
     text-decoration: none;
 }

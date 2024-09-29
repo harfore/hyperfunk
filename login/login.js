@@ -1,52 +1,38 @@
-function setFormMessage(formElement, type, message) {
-    const messageElement = formElement.querySelector(".form__message");
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
-    messageElement.textContent = message;
-    messageElement.classList.remove("form__message--success", "form__message--error");
-    messageElement.classList.add(`form__message--${type}`);
+const firebaseConfig = {
+    apiKey: "AIzaSyC3HCvur1F2wNv7WPJ8Ckg2rvBjPMW9xJc",
+    authDomain: "hyperfunk-d8a80.firebaseapp.com",
+    projectId: "hyperfunk-d8a80",
+    storageBucket: "hyperfunk-d8a80.appspot.com",
+    messagingSenderId: "870303507313",
+    appId: "1:870303507313:web:547e178717ec3bc56a4cd0"
 };
 
-function setInputError(inputElement, message) {
-    inputElement.classList.add("form__input--error");
-    inputElement.parentElement.querySelector(".form__input-error-message").textContent = message;
-};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-function clearInputError(inputElement) {
-    inputElement.classList.remove("form__input--error");
-    inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
-};
+document.getElementById("login").addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-document.addEventListener("DOMContentLoaded", () => {
-    const loginForm = document.querySelector("#login");
-    const createAccountForm = document.querySelector("#createAccount");
+    const email = this.email.value;
+    const password = this.password.value;
+    const loginError = document.getElementById('loginError');
 
-    document.querySelector("#linkCreateAccount").addEventListener("click", e => {
-        e.preventDefault();
-        loginForm.classList.add("form--hidden");
-        createAccountForm.classList.remove("form--hidden");
-    });
+    loginError.innerText = '';
 
-    document.querySelector("#linkLogin").addEventListener("click", e => {
-        e.preventDefault();
-        loginForm.classList.remove("form--hidden");
-        createAccountForm.classList.add("form--hidden");
-    });
+    if (!email || !password) {
+        loginError.innerText = 'Please fill in both fields.';
+        return; // Stop further execution if validation fails
+    }
 
-    loginForm.addEventListener("submit", e => {
-        e.preventDefault();
-
-        setFormMessage(loginForm, "error", "Invalid username/password combination");
-    });
-
-    document.querySelectorAll(".form__input").forEach(inputElement => {
-        inputElement.addEventListener("blur", e => {
-            if (e.target.id === "signupUsername" && e.target.value.length > 0 && e.target.value.length < 10) {
-                setInputError(inputElement, "Username must be at least 10 characters in length");
-            };
-        });
-
-        inputElement.addEventListener("input", e => {
-            clearInputError(inputElement);
-        });
-    });
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        console.log('User logged in:', user);
+    } catch (error) {
+        const errorMessage = error.message;
+        document.getElementById('loginError').innerText = errorMessage;
+    }
 });

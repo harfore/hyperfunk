@@ -1,7 +1,7 @@
 const displayEvent = async () => {
     try {
-        const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
         const urlToFetch = sessionStorage.getItem("urlToFetch");
+        console.log("url to fetch: " + urlToFetch);
         const res = await fetch(urlToFetch);
 
         if (!res.ok) {
@@ -11,8 +11,19 @@ const displayEvent = async () => {
         const data = await res.json();
 
         const eventIndex = sessionStorage.getItem("eventIndex"); // getting the right event from upcomingEvents page
+        console.log("Event index:", eventIndex); // checking the right index is returned
         const pathToEvent = data._embedded?.events[eventIndex];
+
+        if (!eventIndex) {
+            throw new Error("Missing Event Index in sessionStorage");
+        }
+        if (!urlToFetch) {
+            throw new Error("Missing URL in sessionStorage");
+        }
+
         const eventImages = pathToEvent?.images[1]?.url;
+        console.log("picture: " + eventImages);
+
         const eventHeadline = sessionStorage.getItem("clickedArtist");
         const eventDate = sessionStorage.getItem("eventDate");
         const eventVenue = sessionStorage.getItem("eventVenue");
@@ -24,7 +35,7 @@ const displayEvent = async () => {
         // const minPrice = pathToEvent?.classifications[0].priceRanges[0].min;
         // const maxPrice = pathToEvent?.classifications[0].priceRanges[0].max;
         // const seatMap = pathToEvent.seatmap.staticUrl;
-        const eventPromoter = pathToEvent.promoter.name;
+        // const eventPromoter = pathToEvent.promoter.name;
         const showPresentation = document.getElementById('eventChoice');
 
 
@@ -75,11 +86,11 @@ const displayEvent = async () => {
         //     maxPrice = '';
         // };
 
-        if (eventPromoter) {
-            showEventHtmlContent += `<p>Promoter: ${eventPromoter}</p>`
-        } else if (eventPromoter === 'Undefined') {
-            eventPromoter = '';
-        };
+        // if (eventPromoter) {
+        //     showEventHtmlContent += `<p>Promoter: ${eventPromoter}</p>`
+        // } else if (eventPromoter === 'Undefined') {
+        //     eventPromoter = '';
+        // };
 
         const bookingLinkButton = document.createElement('button');
         bookingLinkButton.className = 'button';
