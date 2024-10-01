@@ -1,0 +1,21 @@
+.back_to_events_button {
+    width: 10rem;
+    height: 3rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    border: 2px dotted grey;
+    border-radius: 1rem;
+    margin-top: 4rem;
+}
+
+.back_to_events_button:hover {
+    background-color: grey;
+    transition: background-color 0.7s, color 0.7s;
+}
+
+.event_image {
+    width: 40rem;
+    margin: 2rem;
+}

@@ -37,5 +37,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3000"
+  "proxy": [
+    "http://localhost:3000",
+    "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=345&apikey=QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a"
+  ]
 }

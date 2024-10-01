@@ -6,6 +6,7 @@ import UpcomingEventsStyle from '../styles/UpcomingEventsStyle.css';
 const UpcomingEvents = () => {
     const location = useLocation();
     const dmaId = location.state?.dmaId;
+    const city = location.state?.city;
     const [events, setEvents] = useState([]);
     const [error, setError] = useState(null);
     const [selectedEvent, setSelectedEvent] = useState(null);
@@ -28,14 +29,14 @@ const UpcomingEvents = () => {
         if (dmaId) fetchEventsTicketmaster();
     }, [dmaId, apiKey]);
 
-    if (error) return <div>Error: {error}</div>;
+    if (error) return <div>We're having trouble loading events at the moment: {error}</div>;
     if (!events.length) return <div>Loading events...</div>;
 
     const handleEventClick = (event) => setSelectedEvent(event);
 
     return (
         <div>
-            <h1>Upcoming Events</h1>
+            <h1>Upcoming Events in {city}</h1>
             {selectedEvent ? (
                 <EventItem event={selectedEvent} setSelectedEvent={setSelectedEvent} />
             ) : (
@@ -43,6 +44,7 @@ const UpcomingEvents = () => {
                     {events.map((event, index) => {
                         const eventName = event.name;
                         const eventDate = event.dates?.start?.localDate;
+
                         const eventImage = event.images[0]?.url;
 
                         return (
@@ -53,7 +55,7 @@ const UpcomingEvents = () => {
                                     {eventImage && <img className="event_image" src={eventImage} alt={eventName} />}
                                 </div>
                             </div>
-                        );
+                        )
                     })}
                 </div>
             )}

@@ -7,10 +7,10 @@ const Home = () => {
             <div className="main">
                 <div className="left"></div>
                 <div className="center">
-                    <h2>Welcome to Hyperfunk, your #1 stop for all things live shows! <br />
-                        Share your experience with thousands of fans and don't miss your next favorite concert.
-                    </h2>
-                    <br />
+                    <h1>Welcome to Hyperfunk, your #1 stop for all things live shows!</h1>
+                    <h3>Share your experience with thousands of fans and don't miss your next favorite concert.
+                    </h3>
+
                     <h3>Check out the upcoming events in...</h3>
                     <div id="towns">
                         <div className="cities_list">

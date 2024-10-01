@@ -2,21 +2,25 @@ import { useNavigate } from 'react-router-dom';
 
 const CityButton = ({ city }) => {
     const navigate = useNavigate();
+    const dmaIdMap = {
+        'Los Angeles': 324,
+        'New York': 345,
+        'Toronto': 299,
+        'New Orleans': 344,
+        'Houston': 300,
+        'London': 602,
+    };
+    const dmaId = dmaIdMap[city];
 
     const handleClick = () => {
-        const dmaIdMap = {
-            'Los Angeles': 324,
-            'New York': 345,
-            'Toronto': 299,
-            'New Orleans': 344,
-            'Houston': 300,
-            'London': 602,
-        };
-        const dmaId = dmaIdMap[city];
-        navigate('/upcoming-events', { state: { dmaId } });
+        navigate('/upcoming-events', { state: { dmaId, city } });
     };
 
-    return <button onClick={handleClick}>{city}</button>;
+    return (
+        <div>
+            <img src={`../images/cities/${dmaId}.jpg`} alt={city} className='city_image' /><br></br><button onClick={handleClick} className="city_button">{city.toUpperCase()}</button>
+        </div>
+    )
 };
 
 export default CityButton;
