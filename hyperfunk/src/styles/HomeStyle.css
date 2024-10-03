@@ -40,6 +40,15 @@ body {
     height: 14rem;
 }
 
+button.element {
+    background-color: transparent;
+    font-size: inherit;
+    padding: inherit;
+    margin: inherit;
+    border: none;
+    cursor: pointer;
+}
+
 @media (max-width: 1024px) {
     .city {
         flex: 1 1 calc(33.33% - 16px);

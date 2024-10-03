@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { setDoc, doc } from 'firebase/firestore';
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { setDoc, doc, Timestamp } from 'firebase/firestore';
 import JoinStyle from '../styles/JoinStyle.css';
+import { useNavigate } from 'react-router-dom';
 
 const Join = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -14,6 +16,16 @@ const Join = () => {
         pronouns: ''
     });
     const [error, setError] = useState('');
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                navigate('/'); // Redirect to home if user is logged in
+            }
+        });
+
+        return () => unsubscribe();
+    }, [navigate]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -50,6 +62,7 @@ const Join = () => {
                 handle: formData.handle,
                 country: formData.country,
                 pronouns: formData.pronouns,
+                createdAt: Timestamp.fromDate(new Date())
             });
             console.log('User created and info saved!');
         } catch (error) {
@@ -70,7 +83,7 @@ const Join = () => {
                 <button type="submit">Create Account</button>
             </div>
 
-            {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display errors */}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>
     );
 };

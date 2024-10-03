@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import UpcomingEvents from './pages/UpcomingEvents';
 import Login from './pages/Login';
 import Join from './pages/Join';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/upcoming-events" element={<UpcomingEvents />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );
