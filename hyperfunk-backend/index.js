@@ -1,30 +1,30 @@
 const express = require('express');
-const cors = require('cors');
 const { Pool } = require('pg');
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+const port = 3000;
+
 
 const pool = new Pool({
-    user: 'remih',
+    user: 'postgres',
     host: 'localhost',
-    database: 'concerts_db',
+    database: 'MOTHERBOARD',
     password: 'public',
     port: 5433,
 });
 
-app.get('/api/artists', async (req, res) => {
+app.use(express.json());
+
+app.get('/concerts', async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM artists');
-        res.json(result.rows);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
+        const result = await pool.query('SELECT * FROM concerts');
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error('Error fetching concerts:', error);
+        res.status(500).send('Server error');
     }
 });
 
-// Start server
-app.listen(5000, () => {
-    console.log('Server running on port 5000');
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
 });
