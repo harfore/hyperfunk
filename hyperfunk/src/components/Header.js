@@ -67,8 +67,8 @@ function Header() {
                 </button>
             )}
 
-            <Link className="element" to="/profilez">
-                <h2>Profiles</h2>
+            <Link className="element" to="/users">
+                <h2>Users</h2>
             </Link>
 
             <input name="artist_search" className="artist_search" placeholder="..."></input>

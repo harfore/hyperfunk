@@ -1,32 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 
 function Profile() {
     const auth = getAuth();
     const db = getFirestore();
-    const navigate = useNavigate(); // why doesn't it redirect ?
-    const user = auth.currentUser; // Get the current user
+    const navigate = useNavigate();
+    const user = auth.currentUser;
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchUserData = async () => {
-            if (auth.currentUser) {
-                const userDoc = doc(db, "users", auth.currentUser.uid);
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const userDoc = doc(db, "users", user.uid);
                 const docSnap = await getDoc(userDoc);
                 if (docSnap.exists()) {
                     setUserData(docSnap.data());
-                } else {
-                    navigate('/login');
                 }
+            } else {
+                // Redirect if no user is logged in
+                navigate('/login');
             }
             setLoading(false);
-        };
-        fetchUserData();
-    }, [db, user]);
+        });
+
+        // Clean up the listener
+        return () => unsubscribe();
+    }, [db, navigate, auth]);
 
     if (loading) return <p>Loading...</p>
 
