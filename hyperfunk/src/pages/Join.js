@@ -41,7 +41,6 @@ const Join = () => {
             setError('Invalid email format');
             return false;
         }
-        // Add other validations as needed...
         return true;
     };
 
@@ -72,17 +71,16 @@ const Join = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className='formInputArea'>
-                <input type="email" name="email" placeholder="email" onChange={handleChange} value={formData.email} required />
-                <input type="password" name="password" placeholder="password" onChange={handleChange} value={formData.password} required />
-                <input type="text" name="username" placeholder="username" onChange={handleChange} value={formData.username} required />
-                <input type="text" name="handle" placeholder="handle" onChange={handleChange} value={formData.handle} required />
-                <input type="text" name="country" placeholder="country" onChange={handleChange} value={formData.country} />
-                <input type="text" name="pronouns" placeholder="pronouns" onChange={handleChange} value={formData.pronouns} />
-
-                <button type="submit">Create Account</button>
+            <div className='account_form'>
+                <h1>Join Hyperfunk!</h1>
+                <input type="email" name="email" title="Please write your email." className='account_field' placeholder="email" onChange={handleChange} value={formData.email} required />
+                <input type="password" name="password" title="Please choose a password." className='account_field' placeholder="password" onChange={handleChange} value={formData.password} required />
+                <input type="text" name="username" title="Please pick a username." className='account_field' placeholder="username" onChange={handleChange} value={formData.username} required />
+                <input type="text" name="handle" title="Please choose a handle." className='account_field' placeholder="handle" onChange={handleChange} value={formData.handle} required />
+                <input type="text" name="country" title="What country are you joining from?" className='account_field' placeholder="country" onChange={handleChange} value={formData.country} />
+                <input type="text" name="pronouns" title="How would you like to be adressed?" className='account_field' placeholder="pronouns" onChange={handleChange} value={formData.pronouns} />
+                <button type="submit" className='account_field'>Create Account</button>
             </div>
-
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>
     );
