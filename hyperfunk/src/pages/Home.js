@@ -1,6 +1,6 @@
 import React from 'react';
 import CityButton from '../components/CityButton';
-import HomeStyle from '../styles/HomeStyle.css';
+import '../styles/HomeStyle.css';
 
 const Home = () => {
     return (

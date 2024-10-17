@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import EventItem from '../components/EventItem';
-import UpcomingEventsStyle from '../styles/UpcomingEventsStyle.css';
+import '../styles/UpcomingEventsStyle.css';
 
 const UpcomingEvents = () => {
     const location = useLocation();
