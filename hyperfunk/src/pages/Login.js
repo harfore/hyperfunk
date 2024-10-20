@@ -31,9 +31,6 @@ const Login = ({ handleSuccessfulLogin }) => {
             localStorage.setItem('token', data.token);
 
             handleSuccessfulLogin(data.user);
-            console.log('User logged in:', data.user);
-            console.log('User stored:', localStorage.getItem('user'));
-            console.log('Token stored:', localStorage.getItem('token'));
             navigate('/');
         } catch (error) {
             setError(error.message);
