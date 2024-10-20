@@ -1,5 +1,5 @@
 import React from 'react';
-import EventItemStyle from '../styles/EventItemStyle.css'
+import '../styles/EventItemStyle.css';
 
 const EventItem = ({ event, setSelectedEvent }) => {
     const eventDate = event.dates?.start?.localDate;

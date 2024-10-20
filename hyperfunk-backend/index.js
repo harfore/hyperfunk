@@ -69,7 +69,101 @@ app.put('/api/profile', async (req, res) => {
 const auth = require('./auth')(pool);
 app.use('/api', auth);
 
+app.get('/api/tours', async (req, res) => {
+    const { name } = req.query;
+    try {
+        const result = await pool.query('SELECT * FROM tours WHERE name = $1', [name]);
+        res.status(200).json(result.rows[0]); // Return the first matching tour
+    } catch (error) {
+        console.error('Error fetching tour:', error);
+        res.status(500).send('Server error');
+    }
+});
+
+app.post('/api/tours/check', async (req, res) => {
+    const { name } = req.body;
+
+    try {
+        const existingTour = await pool.query(
+            'SELECT * FROM tours WHERE name = $1',
+            [name]
+        );
+
+        if (existingTour.rows.length > 0) {
+            return res.status(409).json({ message: 'Tour already exists with this name.' });
+        }
+        return res.status(200).json({ message: 'No existing tour found.' });
+    } catch (error) {
+        console.error('Error checking for existing tour:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+app.post('/api/tours', async (req, res) => {
+    const { name, artist_id, number_of_dates, start_date, end_date, description, live_album, concert_film } = req.body;
+
+    try {
+        const result = await pool.query(
+            'INSERT INTO tours (name, artist_id, number_of_dates, start_date, end_date, description, live_album, concert_film) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+            [name, artist_id, number_of_dates, start_date, end_date, description, live_album, concert_film]
+        );
+        res.status(201).json(result.rows[0]);
+    } catch (error) {
+        console.error('Error adding tour:', error);
+        res.status(500).send('Server error');
+    }
+});
+
+// check for existing concerts by date
+app.post('/api/concerts/check', async (req, res) => {
+    const { concert_date, venue } = req.body;
+
+    try {
+        const existingConcert = await pool.query(
+            'SELECT * FROM concerts WHERE concert_date = $1 AND venue = $2',
+            [concert_date, venue]
+        );
+
+        if (existingConcert.rows.length > 0) {
+            return res.status(409).json({ message: 'Concert already exists for this date and venue.' });
+        }
+        return res.status(200).json({ message: 'No existing concert found.' });
+    } catch (error) {
+        console.error('Error checking for existing concert:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+app.post('/api/concerts', async (req, res) => {
+    const { id, artist, venue, concert_date, concert_picture_1, concert_picture_2, concert_picture_3, something_special, user_count, review, review_count } = req.body;
+
+    try {
+        // First, check for existing concerts
+        const existingConcert = await pool.query(
+            'SELECT * FROM concerts WHERE concert_date = $1 AND venue = $2 AND artist = $3',
+            [concert_date, venue, artist]
+        );
+
+        if (existingConcert.rows.length > 0) {
+            return res.status(409).json({ message: 'Concert already exists for this date and venue.' });
+        }
+
+        // If no existing concert, proceed to insert
+        const result = await pool.query(
+            'INSERT INTO concerts (artist, venue, concert_date, concert_picture_1, concert_picture_2, concert_picture_3, something_special, user_count, review, review_count) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *',
+            [artist, venue, concert_date, concert_picture_1, concert_picture_2, concert_picture_3, something_special, user_count, review, review_count]
+        );
+
+        res.status(201).json(result.rows[0]); // Return the added concert
+
+    } catch (error) {
+        console.error('Error adding concert:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 app.get('/concerts', async (req, res) => {
+    console.log("Received request to add concert:", req.body);
     try {
         const result = await pool.query('SELECT * FROM concerts');
         res.status(200).json(result.rows);

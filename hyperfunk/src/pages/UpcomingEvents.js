@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import EventItem from '../components/EventItem';
+import { saveConcertAndTour } from '../services/concertService';
 import '../styles/UpcomingEventsStyle.css';
 
 const UpcomingEvents = () => {
@@ -32,7 +33,10 @@ const UpcomingEvents = () => {
     if (error) return <div>We're having trouble loading events at the moment: {error}</div>;
     if (!events.length) return <div>Loading events...</div>;
 
-    const handleEventClick = (event) => setSelectedEvent(event);
+    const handleEventClick = async (event) => {
+        setSelectedEvent(event);
+        await saveConcertAndTour(event); // save the concert and tour on click
+    };
 
     return (
         <div>

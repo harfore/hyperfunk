@@ -40,7 +40,7 @@ function AppContent() {
       <Header isLoggedIn={isLoggedIn} userName={userName} onSignOut={handleSignOut} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/upcoming" element={<UpcomingEvents />} />
+        <Route path="/upcoming-events" element={<UpcomingEvents />} />
         <Route path="/login" element={<Login handleSuccessfulLogin={handleSuccessfulLogin} />} />
         <Route path="/join" element={<Join />} />
         <Route
