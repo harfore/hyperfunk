@@ -173,6 +173,16 @@ app.get('/concerts', async (req, res) => {
     }
 });
 
+app.get('/api/popular', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM tours WHERE favorite = true');
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error('Error fetching tours:', error.message, error.stack);
+        res.status(500).send('Server error');
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });

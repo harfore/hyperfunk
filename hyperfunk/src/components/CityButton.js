@@ -9,6 +9,9 @@ const CityButton = ({ city }) => {
         'New Orleans': 344,
         'Houston': 300,
         'London': 602,
+        'Atlanta': 220,
+        'Chicago': 249,
+        'Indianapolis': 303,
     };
     const dmaId = dmaIdMap[city];
 

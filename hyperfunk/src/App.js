@@ -7,6 +7,7 @@ import UpcomingEvents from './pages/UpcomingEvents';
 import Login from './pages/Login';
 import Join from './pages/Join';
 import Profile from './pages/Profile';
+import Popular from './pages/Popular';
 
 function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,15 +38,17 @@ function AppContent() {
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} userName={userName} onSignOut={handleSignOut} />
+      <Header isLoggedIn={isLoggedIn} userName={userName} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/upcoming-events" element={<UpcomingEvents />} />
         <Route path="/login" element={<Login handleSuccessfulLogin={handleSuccessfulLogin} />} />
         <Route path="/join" element={<Join />} />
+        <Route path="/popular" element={<Popular />} />
+
         <Route
           path="/profile"
-          element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
+          element={isLoggedIn ? <Profile onSignOut={handleSignOut} /> : <Navigate to="/login" />}
         />
       </Routes>
     </>

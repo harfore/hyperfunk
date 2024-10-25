@@ -17,6 +17,9 @@ const Home = () => {
                     <li><CityButton city="New Orleans" /></li>
                     <li><CityButton city="Houston" /></li>
                     <li><CityButton city="London" /></li>
+                    <li><CityButton city="Atlanta" /></li>
+                    <li><CityButton city="Chicago" /></li>
+                    <li><CityButton city="Indianapolis" /></li>
                 </ul>
             </div>
         </div>

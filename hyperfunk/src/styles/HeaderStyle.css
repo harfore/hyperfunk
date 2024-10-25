@@ -24,3 +24,7 @@
     color: white;
     transition: background-color 1s, color 1s;
 }
+
+.artist_search {
+    border-radius: 1rem;
+}

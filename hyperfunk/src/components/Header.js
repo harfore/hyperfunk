@@ -2,11 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/HeaderStyle.css';
 
-function Header({ isLoggedIn, userName, onSignOut }) {
+function Header({ isLoggedIn, userName }) {
     return (
         <header className="banner">
             <Link className="element" to="/">
                 <h2>Hyperfunk</h2>
+            </Link>
+            <Link className="element" to="/popular">
+                <h2>Popular</h2>
             </Link>
 
             {isLoggedIn ? (
@@ -22,12 +25,6 @@ function Header({ isLoggedIn, userName, onSignOut }) {
                         <h2>Join</h2>
                     </Link>
                 </>
-            )}
-
-            {isLoggedIn && (
-                <button className="element" onClick={onSignOut}>
-                    <h2>Disconnect</h2>
-                </button>
             )}
 
             <Link className="element" to="/users">

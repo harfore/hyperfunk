@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "../styles/ProfileStyle.css";
 
-function Profile() {
+function Profile({ onSignOut }) {
     const navigate = useNavigate();
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -110,11 +111,11 @@ function Profile() {
 
                     {editing ? (
                         <>
-                            <p>Handle: <input type="text" name="handle" value={formData.handle} onChange={handleChange} /></p>
-                            <p>Bio: <textarea name="bio" value={formData.bio} onChange={handleChange} placeholder="Write a bio here (optional)" /></p>
+                            <p>Handle: <input type="text" name="handle" value={formData.handle} onChange={handleChange} className='profile_input' /></p>
+                            <p>Bio: <textarea name="bio" value={formData.bio} onChange={handleChange} className='profile_input' placeholder="Write a bio here (optional)" /></p>
 
                             <p>Country:
-                                <select name="country" value={formData.country} onChange={handleChange}>
+                                <select name="country" value={formData.country} onChange={handleChange} className='profile_input'>
                                     <option value="">Select your country</option>
                                     <option value="Algeria">Algeria</option>
                                     <option value="Andorra">Andorra</option>
@@ -186,21 +187,17 @@ function Profile() {
                                     <option value="Yemen">Yemen</option>
                                 </select>
                             </p>
-                            <p>Pronouns: <input type="text" name="pronouns" value={formData.pronouns} onChange={handleChange} placeholder="Enter your pronouns (optional)" /></p>
-                            <p>Password: <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="New password (optional)" /></p>
+                            <p>Pronouns: <input type="text" name="pronouns" value={formData.pronouns} onChange={handleChange} className='profile_input' placeholder="Enter your pronouns (optional)" /></p>
+                            <p>Password: <input type="password" name="password" value={formData.password} onChange={handleChange} className='profile_input' placeholder="New password (optional)" /></p>
+                            <p>{userData.username || 'This user'} has been a Hyperfunk user since {new Date(userData.createdAt).toLocaleDateString()}</p>
 
-                            <button onClick={handleUpdate}>Save Changes</button>
-                            <button onClick={handleCancelEdit}>Cancel</button>
+                            <button className="profile_button" onClick={handleUpdate}>Save Changes</button>
+                            <button className="profile_button" onClick={handleCancelEdit}>Cancel</button>
                         </>
                     ) : (
                         <>
                             <p>{userData.handle}</p>
-                            <p>{userData.bio || 'Not set'}</p>
-                            <p>Country: {userData.country}</p>
-                            <p>Pronouns: {userData.pronouns || 'Not set'}</p>
-                            <p>{userData.username} has been a Hyperfunk user since {new Date(userData.createdAt).toLocaleDateString()}</p>
-
-                            <button onClick={handleEditClick}>Edit Profile</button>
+                            <button className="profile_button" onClick={handleEditClick}>Edit Profile</button>
                         </>
                     )}
 
@@ -209,6 +206,7 @@ function Profile() {
             ) : (
                 <p>User info not found</p>
             )}
+            <button className="profile_button" onClick={onSignOut}>Disconnect</button>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 export const saveConcertAndTour = async (event) => {
     let tourId;
 
-    // check if the tour already exists in the database
+    // Check if the tour already exists
     try {
         const existingTourRes = await fetch(`http://localhost:5000/api/tours?name=${encodeURIComponent(event.name)}`, {
             method: 'GET',
@@ -10,14 +10,14 @@ export const saveConcertAndTour = async (event) => {
         if (existingTourRes.ok) {
             const existingTour = await existingTourRes.json();
             if (existingTour && existingTour.id) {
-                tourId = existingTour.id; // tour already exists, using the existing ID
+                tourId = existingTour.id; // Use the existing tour ID
             }
         }
     } catch (err) {
         console.error('Error checking for existing tour:', err);
     }
 
-    // toue doesn't exist yet, creating it
+    // Create the tour if it doesn't exist
     if (!tourId) {
         const tourData = {
             name: event.name,
@@ -28,7 +28,9 @@ export const saveConcertAndTour = async (event) => {
             description: event.info || '',
             live_album: false,
             concert_film: false,
+            tour_picture_url: event.images[0]?.url, // Include the event image URL
         };
+        console.log("springbreak: " + tourData.tour_picture_url);
 
         try {
             const tourRes = await fetch('http://localhost:5000/api/tours', {
@@ -48,7 +50,34 @@ export const saveConcertAndTour = async (event) => {
         }
     }
 
-    // check if the specific concert already exists
+    // Save the venue if it doesn't exist
+    const venueData = {
+        name: event._embedded.venues[0]?.name,
+        city: event._embedded.venues[0]?.city?.name,
+        country: event._embedded.venues[0]?.country?.name,
+    };
+
+    try {
+        const existingVenueRes = await fetch('http://localhost:5000/api/venues/check', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: venueData.name }),
+        });
+
+        const existingVenue = await existingVenueRes.json();
+
+        if (!existingVenue.exists) {
+            await fetch('http://localhost:5000/api/venues', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(venueData),
+            });
+        }
+    } catch (err) {
+        console.error('Error saving venue:', err);
+    }
+
+    // Check if the specific concert already exists
     const concertDate = event.dates.start.localDate;
     const artist = event.name;
     const venue = event._embedded.venues[0]?.name;
@@ -64,22 +93,19 @@ export const saveConcertAndTour = async (event) => {
 
         if (existingConcert.exists) {
             console.log('Concert already exists in the database.');
-            return; // exit the function if the concert already exists
+            return; // Exit the function if the concert already exists
         }
     } catch (err) {
         console.error('Error checking for existing concert:', err);
         return;
     }
 
-    // save the individual concert linked to the tour
+    // Save the individual concert linked to the tour
     const concertData = {
         tour_id: tourId,
         artist: artist,
         venue: venue,
         concert_date: concertDate,
-        concert_picture_1: event.images[0]?.url,
-        concert_picture_2: event.images[1]?.url,
-        concert_picture_3: event.images[2]?.url,
         something_special: event.info || '',
         user_count: 0,
         review: '',
