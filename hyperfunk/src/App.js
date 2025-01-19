@@ -1,18 +1,18 @@
 import '../src/styles/App.css';
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
-import { Route, Routes, useNavigate, BrowserRouter as Router, Navigate } from 'react-router-dom';
+import { Route, Routes, BrowserRouter as Router, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import UpcomingEvents from './pages/UpcomingEvents';
 import Login from './pages/Login';
 import Join from './pages/Join';
 import Profile from './pages/Profile';
 import Popular from './pages/Popular';
+import Tour from './pages/Tour';
 
 function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -45,6 +45,7 @@ function AppContent() {
         <Route path="/login" element={<Login handleSuccessfulLogin={handleSuccessfulLogin} />} />
         <Route path="/join" element={<Join />} />
         <Route path="/popular" element={<Popular />} />
+        <Route path="/tour" element={<Tour />} />
 
         <Route
           path="/profile"

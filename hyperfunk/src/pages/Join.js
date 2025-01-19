@@ -51,6 +51,7 @@ const Join = () => {
 
         if (response.ok) {
             console.log('User created:', data);
+            localStorage.setItem('token', data.token);
             navigate('/');
         } else {
             setError(data.message || 'Registration failed');

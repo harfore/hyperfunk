@@ -13,6 +13,7 @@
 .back_to_events_button:hover {
     background-color: grey;
     transition: background-color 0.7s, color 0.7s;
+    cursor: pointer;
 }
 
 .event_image {

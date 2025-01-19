@@ -78,6 +78,7 @@ a {
 
 .event_name:hover {
     color: rgb(199, 197, 197);
+    cursor: pointer;
 }
 
 .event_image {

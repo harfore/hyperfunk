@@ -189,15 +189,15 @@ function Profile({ onSignOut }) {
                             </p>
                             <p>Pronouns: <input type="text" name="pronouns" value={formData.pronouns} onChange={handleChange} className='profile_input' placeholder="Enter your pronouns (optional)" /></p>
                             <p>Password: <input type="password" name="password" value={formData.password} onChange={handleChange} className='profile_input' placeholder="New password (optional)" /></p>
-                            <p>{userData.username || 'This user'} has been a Hyperfunk user since {new Date(userData.createdAt).toLocaleDateString()}</p>
+                            <p>{formData.handle || 'This user'} has been a Hyperfunk user since 29/10/2024.</p>
 
-                            <button className="profile_button" onClick={handleUpdate}>Save Changes</button>
-                            <button className="profile_button" onClick={handleCancelEdit}>Cancel</button>
+                            <button className="profile_button" onClick={handleUpdate}>SAVE CHANGES</button>
+                            <button className="profile_button" onClick={handleCancelEdit}>CANCEL</button>
                         </>
                     ) : (
                         <>
                             <p>{userData.handle}</p>
-                            <button className="profile_button" onClick={handleEditClick}>Edit Profile</button>
+                            <button className="profile_button" onClick={handleEditClick}>EDIT PROFILE</button>
                         </>
                     )}
 
@@ -206,9 +206,10 @@ function Profile({ onSignOut }) {
             ) : (
                 <p>User info not found</p>
             )}
-            <button className="profile_button" onClick={onSignOut}>Disconnect</button>
+            <button className="profile_button" onClick={onSignOut}>DISCONNECT</button>
         </div>
     );
 }
 
 export default Profile;
+// {new Date(userData.createdAt).toLocaleDateString()}

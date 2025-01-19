@@ -12,6 +12,7 @@ const UpcomingEvents = () => {
     const [error, setError] = useState(null);
     const [selectedEvent, setSelectedEvent] = useState(null);
     const apiKey = 'QpKB72Ay4A8yTodIl5QYlNGRFfSJ457a';
+    const maxOccurrences = 3;
 
     useEffect(() => {
         const fetchEventsTicketmaster = async () => {
@@ -21,7 +22,9 @@ const UpcomingEvents = () => {
                 const res = await fetch(showUrlToFetch);
                 if (!res.ok) throw new Error('Failed to fetch events');
                 const data = await res.json();
-                setEvents(data._embedded?.events || []);
+                const allEvents = data._embedded?.events || [];
+                const filteredEvents = filterEventsByName(allEvents, maxOccurrences);
+                setEvents(filteredEvents || []);
             } catch (err) {
                 setError(err.message);
             }
@@ -29,6 +32,15 @@ const UpcomingEvents = () => {
 
         if (dmaId) fetchEventsTicketmaster();
     }, [dmaId, apiKey]);
+
+    const filterEventsByName = (events, maxOccurrences) => {
+        const eventCount = {};
+        return events.filter(event => {
+            const name = event.name;
+            eventCount[name] = (eventCount[name] || 0) + 1;
+            return eventCount[name] <= maxOccurrences;
+        });
+    };
 
     if (error) return <div>We're having trouble loading events at the moment: {error}</div>;
     if (!events.length) return <div>Loading events...</div>;

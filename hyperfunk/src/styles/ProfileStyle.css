@@ -1,10 +1,13 @@
 .profile_button {
-    padding: 1.5rem;
-    background-color: yellow;
+    padding: 0.8rem 1rem;
+    border: white 1rem;
     border-radius: 1rem;
+    margin: 1rem;
+    font-family: bold;
+    font-size: 1rem;
 }
 
 .profile_input {
-    padding: 1.5rem;
+    padding: 0.8rem 1.5rem;
     border-radius: 1rem;
 }

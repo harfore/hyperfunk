@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "@testing-library/react": "^16.0.1",
     "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

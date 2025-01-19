@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/UpcomingEventsStyle.css';
 
 function AdminFavoriteTours() {
     const [favorites, setFavorites] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchFavorites = async () => {
@@ -35,11 +37,15 @@ function AdminFavoriteTours() {
             <div className='event_container'>
                 {favorites.length > 0 ? (
                     favorites.map(tour => (
-                        <div className='event_item' key={tour.id}>
+                        <div
+                            className='event_item'
+                            key={tour.id}
+                            onClick={() => navigate(`/tour/${tour.id}`)} // navigate to tour detail page
+                            style={{ cursor: 'pointer' }} // indicate that it's clickable
+                        >
                             <h3>{tour.name}</h3>
                             <img src={tour.tour_picture_url} alt={`${tour.name}`} className='event_image' />
                         </div>
-
                     ))
                 ) : (
                     <p>No favorite tours found.</p>

@@ -114,6 +114,30 @@ app.post('/api/tours', async (req, res) => {
     }
 });
 
+app.get('/api/tours/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const tourResult = await pool.query('SELECT * FROM tours WHERE id = $1', [id]);
+
+        if (tourResult.rows.length === 0) {
+            return res.status(404).json({ message: 'Tour not found' });
+        }
+
+        // Fetch concerts linked to this tour
+        const concertResult = await pool.query('SELECT * FROM concerts WHERE tour_id = $1', [id]);
+        const tourData = {
+            ...tourResult.rows[0],
+            concerts: concertResult.rows,
+        };
+
+        res.status(200).json(tourData);
+    } catch (error) {
+        console.error('Error fetching tour details:', error);
+        res.status(500).send('Server error');
+    }
+});
+
+
 // check for existing concerts by date
 app.post('/api/concerts/check', async (req, res) => {
     const { concert_date, venue } = req.body;
