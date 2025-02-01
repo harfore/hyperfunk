@@ -13,10 +13,10 @@ const TicketmasterService = () => {
 
     useEffect(() => {
         const fetchEventsTicketmaster = async () => {
-            const showUrlToFetch = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=${dmaId}&apikey=${apiKey}`;
+            const urlToFetch = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=${dmaId}&apikey=${apiKey}`;
 
             try {
-                const res = await fetch(showUrlToFetch);
+                const res = await fetch(urlToFetch);
                 if (!res.ok) throw new Error('Failed to fetch events');
                 const data = await res.json();
                 const allEvents = data._embedded?.events || [];
